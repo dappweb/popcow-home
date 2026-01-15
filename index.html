@@ -1,0 +1,2014 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/logo.jpg" type="image/jpg">
+  <title>Popcow Defi - 质押升级，点击挖矿</title>
+  <meta name="description" content="Popcow 升级为 Popcow Defi，质押老代币获得新应用代币，点击挖矿轻松赚钱">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(to bottom right, #0f172a, #1e3a8a, #0f172a);
+      min-height: 100vh;
+      color: white;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      background: rgba(30, 41, 59, 0.8);
+      backdrop-filter: blur(12px);
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(34, 211, 238, 0.2);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .logo {
+      height: 40px;
+      width: 40px;
+      object-fit: contain;
+      border-radius: 50%;
+      border: 2px solid rgba(34, 211, 238, 0.5);
+      box-shadow: 0 0 20px rgba(34, 211, 238, 0.2);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .lang-btn {
+      background: none;
+      border: none;
+      color: #22d3ee;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      padding: 4px 10px;
+      transition: color 0.3s;
+    }
+
+    .lang-btn:hover {
+      color: #67e8f9;
+    }
+
+    .social-link {
+      padding: 6px;
+      opacity: 1;
+      transition: opacity 0.3s;
+      display: inline-flex;
+    }
+
+    .social-link:hover {
+      opacity: 0.7;
+    }
+
+    .social-icon {
+      width: 20px;
+      height: 20px;
+      color: #22d3ee;
+    }
+
+    .contract-address {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .contract-code {
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: #22d3ee;
+      font-weight: 600;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 200px;
+    }
+
+    .copy-btn {
+      background: none;
+      border: none;
+      padding: 6px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.3s;
+      display: flex;
+      align-items: center;
+    }
+
+    .copy-btn:hover {
+      background: rgba(34, 211, 238, 0.2);
+    }
+
+    /* Main Content */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+
+    .click-area {
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .main-image-wrapper {
+      position: relative;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.1s;
+      outline: none; /* 移除默认轮廓 */
+    -webkit-tap-highlight-color: transparent; /* 移除移动端点击高光 */
+    }
+    
+    .main-image-wrapper:focus {
+    outline: none; /* 禁止获取焦点或激活状态时的边框 */
+    box-shadow: none; /* 禁止可能的阴影效果 */
+}
+
+    .main-image-wrapper:active {
+        outline: none; /* 禁止获取焦点或激活状态时的边框 */
+    box-shadow: none; /* 禁止可能的阴影效果 */
+      transform: scale(0.95);
+    }
+
+    .main-image {
+      width: 260px;
+      height: 260px;
+      object-fit: contain;
+      filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.5));
+      pointer-events: none;
+    }
+
+    .click-counter {
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      background: linear-gradient(to bottom right, #22d3ee, #2563eb);
+      color: white;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 20px;
+      box-shadow: 0 20px 25px rgba(34, 211, 238, 0.5);
+      border: 4px solid #1e293b;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .total-clicks {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .total-number {
+      font-size: 56px;
+      font-weight: 900;
+      color: #22d3ee;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+    }
+
+    .feature-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 32px;
+      max-width: 768px;
+    }
+
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 24px;
+      border-radius: 9999px;
+      border: 2px solid;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .badge-cyan {
+      background: linear-gradient(to right, rgba(34, 211, 238, 0.2), rgba(59, 130, 246, 0.2));
+      border-color: rgba(34, 211, 238, 0.5);
+      box-shadow: 0 4px 6px rgba(34, 211, 238, 0.3);
+    }
+
+    .badge-purple {
+      background: linear-gradient(to right, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2));
+      border-color: rgba(168, 85, 247, 0.5);
+      box-shadow: 0 4px 6px rgba(168, 85, 247, 0.3);
+    }
+
+    .badge-amber {
+      background: linear-gradient(to right, rgba(251, 191, 36, 0.2), rgba(251, 146, 60, 0.2));
+      border-color: rgba(251, 191, 36, 0.5);
+      box-shadow: 0 4px 6px rgba(251, 191, 36, 0.3);
+    }
+
+    .badge-text {
+      font-size: 14px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-cyan .badge-text { color: #67e8f9; }
+    .badge-purple .badge-text { color: #d8b4fe; }
+    .badge-amber .badge-text { color: #fcd34d; }
+
+    .about-link {
+      color: #22d3ee;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+      text-decoration-color: rgba(34, 211, 238, 0.5);
+      transition: color 0.3s;
+    }
+
+    .about-link:hover {
+      color: #67e8f9;
+    }
+
+    /* Hero CTA */
+    .hero-cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      margin-top: 32px;
+    }
+
+    .upgrade-notice {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(251, 191, 36, 0.15);
+      border: 2px solid rgba(251, 191, 36, 0.5);
+      padding: 12px 20px;
+      border-radius: 12px;
+      color: #fcd34d;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      animation: notice-glow 2s ease-in-out infinite;
+    }
+
+    @keyframes notice-glow {
+      0%, 100% {
+        box-shadow: 0 0 10px rgba(251, 191, 36, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
+      }
+    }
+
+    .upgrade-badge {
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      color: #0f172a;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .staking-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(34, 211, 238, 0.1);
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      padding: 16px 24px;
+      border-radius: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .staking-step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #e2e8f0;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .step-icon {
+      font-size: 18px;
+    }
+
+    .staking-arrow {
+      color: #22d3ee;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* Upgrade Details Section */
+    .upgrade-details-section {
+      width: 100%;
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(34, 211, 238, 0.1));
+      backdrop-filter: blur(12px);
+      padding: 48px 16px;
+      border-top: 2px solid rgba(251, 191, 36, 0.3);
+      border-bottom: 2px solid rgba(251, 191, 36, 0.3);
+    }
+
+    .upgrade-details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .detail-card {
+      background: rgba(30, 41, 59, 0.9);
+      backdrop-filter: blur(12px);
+      padding: 28px;
+      border-radius: 16px;
+      border: 2px solid rgba(251, 191, 36, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .detail-card:hover {
+      border-color: rgba(251, 191, 36, 0.6);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(251, 191, 36, 0.15);
+    }
+
+    .detail-icon {
+      font-size: 40px;
+      margin-bottom: 16px;
+    }
+
+    .detail-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #fcd34d;
+      margin-bottom: 12px;
+    }
+
+    .detail-desc {
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .detail-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(34, 211, 238, 0.2);
+    }
+
+    .info-tag {
+      font-size: 12px;
+      color: #94a3b8;
+      font-weight: 600;
+    }
+
+    .info-code {
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      color: #22d3ee;
+      font-weight: 600;
+    }
+
+    .detail-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .detail-list li {
+      font-size: 14px;
+      color: #e2e8f0;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(251, 191, 36, 0.1);
+    }
+
+    .detail-list li:last-child {
+      border-bottom: none;
+    }
+
+    /* Enhanced Demo */
+    .demo-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .demo-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .demo-container:hover .demo-overlay {
+      opacity: 1;
+    }
+
+    .demo-cta {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(34, 211, 238, 0.9);
+      color: #0f172a;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 14px;
+      backdrop-filter: blur(12px);
+      transition: all 0.3s ease;
+      pointer-events: all;
+    }
+
+    .demo-cta:hover {
+      background: rgba(34, 211, 238, 1);
+      transform: scale(1.05);
+    }
+    .hero-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 16px;
+      gap: 48px;
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 896px;
+    }
+
+    .hero-title {
+      font-size: 48px;
+      font-weight: 900;
+      color: #22d3ee;
+      margin-bottom: 16px;
+      line-height: 1.2;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+    }
+
+    .hero-subtitle {
+      font-size: 20px;
+      color: #cbd5e1;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .primary-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #22d3ee, #2563eb, #7c3aed);
+      color: white;
+      text-decoration: none;
+      padding: 16px 32px;
+      border-radius: 9999px;
+      font-weight: bold;
+      font-size: 18px;
+      box-shadow: 0 8px 32px rgba(34, 211, 238, 0.4);
+      border: 2px solid rgba(34, 211, 238, 0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      animation: pulse 2s infinite;
+    }
+
+    .primary-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .primary-cta:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 12px 40px rgba(34, 211, 238, 0.6);
+      border-color: rgba(34, 211, 238, 0.6);
+    }
+
+    .primary-cta:hover::before {
+      left: 100%;
+    }
+
+    .primary-cta.large {
+      padding: 20px 40px;
+      font-size: 20px;
+    }
+
+    .secondary-cta {
+      color: #22d3ee;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 12px 24px;
+      border: 2px solid rgba(34, 211, 238, 0.5);
+      border-radius: 9999px;
+      transition: all 0.3s ease;
+    }
+
+    .secondary-cta:hover {
+      background: rgba(34, 211, 238, 0.1);
+      border-color: rgba(34, 211, 238, 0.8);
+      color: #67e8f9;
+    }
+
+    .hero-demo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .demo-stats {
+      text-align: center;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stat-number {
+      font-size: 48px;
+      font-weight: 900;
+      color: #22d3ee;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+    }
+
+    .stat-label {
+      font-size: 16px;
+      color: #cbd5e1;
+      font-weight: 600;
+    }
+
+    /* Earnings Showcase */
+    .earnings-showcase {
+      width: 100%;
+      background: rgba(30, 41, 59, 0.4);
+      backdrop-filter: blur(12px);
+      padding: 48px 16px;
+      border-top: 2px solid rgba(34, 211, 238, 0.2);
+    }
+
+    .earnings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 896px;
+      margin: 0 auto;
+    }
+
+    .earning-card {
+      background: rgba(30, 41, 59, 0.8);
+      backdrop-filter: blur(12px);
+      padding: 32px 24px;
+      border-radius: 16px;
+      border: 2px solid rgba(34, 211, 238, 0.2);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .earning-card:hover {
+      border-color: rgba(34, 211, 238, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(34, 211, 238, 0.2);
+    }
+
+    .earning-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .earning-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #67e8f9;
+      margin-bottom: 12px;
+    }
+
+    .earning-desc {
+      font-size: 16px;
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .earning-action {
+      margin-top: auto;
+    }
+
+    .earning-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #22d3ee, #2563eb);
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 9999px;
+      font-weight: bold;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .earning-cta:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 6px 24px rgba(34, 211, 238, 0.4);
+    }
+
+    .earnings-cta {
+      text-align: center;
+      margin-top: 48px;
+      padding: 32px;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      border: 2px solid rgba(34, 211, 238, 0.2);
+    }
+
+    .earnings-subtitle {
+      font-size: 18px;
+      color: #cbd5e1;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    /* How to Play Section */
+    .how-to-play-section {
+      width: 100%;
+      background: rgba(30, 41, 59, 0.6);
+      backdrop-filter: blur(12px);
+      padding: 48px 16px;
+      border-top: 2px solid rgba(34, 211, 238, 0.2);
+    }
+
+    .play-container {
+      max-width: 896px;
+      margin: 0 auto;
+    }
+
+    .play-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .step-card {
+      display: flex;
+      gap: 16px;
+      background: rgba(30, 41, 59, 0.8);
+      backdrop-filter: blur(12px);
+      padding: 24px;
+      border-radius: 12px;
+      border: 2px solid rgba(34, 211, 238, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .step-card:hover {
+      border-color: rgba(34, 211, 238, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #22d3ee, #2563eb);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .step-content {
+      flex: 1;
+    }
+
+    .step-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #67e8f9;
+      margin-bottom: 8px;
+    }
+
+    .step-desc {
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    .game-rules {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(12px);
+      padding: 32px;
+      border-radius: 16px;
+      border: 2px solid rgba(34, 211, 238, 0.2);
+      margin-bottom: 32px;
+    }
+
+    .rules-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #22d3ee;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .rule-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .rule-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .rule-text {
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    .play-cta {
+      text-align: center;
+    }
+
+    /* App Features Section */
+    .app-features-section {
+      width: 100%;
+      background: rgba(30, 41, 59, 0.4);
+      backdrop-filter: blur(12px);
+      padding: 48px 16px;
+      border-top: 2px solid rgba(34, 211, 238, 0.2);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto 64px;
+    }
+
+    .feature-card {
+      background: rgba(30, 41, 59, 0.8);
+      backdrop-filter: blur(12px);
+      padding: 32px;
+      border-radius: 20px;
+      border: 2px solid rgba(34, 211, 238, 0.2);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #22d3ee, #2563eb, #7c3aed);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .feature-card:hover {
+      border-color: rgba(34, 211, 238, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(34, 211, 238, 0.2);
+    }
+
+    .feature-icon {
+      margin-bottom: 24px;
+    }
+
+    .icon-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .feature-emoji {
+      font-size: 48px;
+      display: block;
+      position: relative;
+      z-index: 2;
+    }
+
+    .icon-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, rgba(34, 211, 238, 0.3) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: glow-pulse 2s infinite;
+    }
+
+    @keyframes glow-pulse {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.8;
+      }
+    }
+
+    .feature-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #67e8f9;
+      margin-bottom: 16px;
+    }
+
+    .feature-desc {
+      font-size: 16px;
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .feature-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(34, 211, 238, 0.1);
+      padding: 8px 12px;
+      border-radius: 9999px;
+      border: 1px solid rgba(34, 211, 238, 0.2);
+    }
+
+    .highlight-icon {
+      font-size: 14px;
+    }
+
+    .highlight-text {
+      font-size: 12px;
+      color: #67e8f9;
+      font-weight: 600;
+    }
+
+    .feature-action {
+      margin-top: auto;
+    }
+
+    .feature-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #22d3ee, #2563eb);
+      color: white;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 9999px;
+      font-weight: bold;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .feature-cta:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 32px rgba(34, 211, 238, 0.4);
+    }
+
+    /* About Section */
+    .about-section {
+      width: 100%;
+      background: rgba(30, 41, 59, 0.6);
+      backdrop-filter: blur(12px);
+      padding: 48px 16px;
+      border-top: 2px solid rgba(34, 211, 238, 0.2);
+    }
+
+    .about-container {
+      max-width: 896px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 900;
+      color: #22d3ee;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .cards-container {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .card {
+      background: rgba(30, 41, 59, 0.8);
+      backdrop-filter: blur(12px);
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(34, 211, 238, 0.1);
+      border: 2px solid rgba(34, 211, 238, 0.2);
+      transition: border-color 0.3s;
+    }
+
+    .card:hover {
+      border-color: rgba(34, 211, 238, 0.4);
+    }
+
+    .card-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #67e8f9;
+      margin-bottom: 12px;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .image-single {
+      margin-bottom: 16px;
+    }
+
+    .image-container {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 2px solid rgba(34, 211, 238, 0.3);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .image-container-wide {
+      aspect-ratio: 16 / 9;
+    }
+
+    .card-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .image-container:hover .card-image {
+      transform: scale(1.1);
+    }
+
+    .card-text {
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .card-text:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Showcase Section */
+    .showcase-section {
+      width: 100%;
+      background: rgba(30, 41, 59, 0.4);
+      backdrop-filter: blur(12px);
+      padding: 32px 16px;
+      border-top: 2px solid rgba(34, 211, 238, 0.2);
+    }
+
+    .showcase-container {
+      max-width: 1152px;
+      margin: 0 auto;
+    }
+
+    .showcase-title {
+      font-size: 24px;
+      font-weight: 900;
+      color: #22d3ee;
+      text-align: center;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .showcase-item {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 2px solid rgba(34, 211, 238, 0.3);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s;
+    }
+
+    .showcase-item:hover {
+      border-color: rgba(34, 211, 238, 0.6);
+      box-shadow: 0 4px 6px rgba(34, 211, 238, 0.3);
+      transform: scale(1.05);
+    }
+
+    .showcase-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .showcase-item:hover .showcase-image {
+      transform: scale(1.1);
+    }
+
+    .showcase-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.8), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .showcase-item:hover .showcase-overlay {
+      opacity: 1;
+    }
+    
+    /* Charity Section */
+    .charity-section {
+      width: 100%;
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(168, 85, 247, 0.15));
+      backdrop-filter: blur(12px);
+      padding: 48px 16px;
+      border-top: 2px solid rgba(236, 72, 153, 0.3);
+    }
+
+    .charity-container {
+      max-width: 896px;
+      margin: 0 auto;
+    }
+
+    .charity-title {
+      font-size: 32px;
+      font-weight: 900;
+      color: #f472b6;
+      text-align: center;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .charity-subtitle {
+      font-size: 18px;
+      color: #fbbf24;
+      text-align: center;
+      margin-bottom: 32px;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    .charity-description {
+      font-size: 16px;
+      color: #e9d5ff;
+      text-align: center;
+      margin-bottom: 32px;
+      line-height: 1.8;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .donation-addresses {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .address-item {
+      background: rgba(30, 41, 59, 0.8);
+      backdrop-filter: blur(12px);
+      padding: 20px;
+      border-radius: 12px;
+      border: 2px solid rgba(236, 72, 153, 0.3);
+      box-shadow: 0 4px 6px rgba(236, 72, 153, 0.2);
+      transition: all 0.3s;
+    }
+
+    .address-item:hover {
+      border-color: rgba(236, 72, 153, 0.6);
+      box-shadow: 0 6px 8px rgba(236, 72, 153, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .address-label {
+      font-size: 16px;
+      font-weight: bold;
+      color: #f472b6;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .address-value {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(236, 72, 153, 0.2);
+    }
+
+    .address-text {
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      color: #fbbf24;
+      font-weight: 600;
+      word-break: break-all;
+      flex: 1;
+    }
+
+    .charity-copy-btn {
+      background: linear-gradient(135deg, #ec4899, #a855f7);
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: white;
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    .charity-copy-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(236, 72, 153, 0.4);
+    }
+
+    .heart-icon {
+      width: 28px;
+      height: 28px;
+      color: #f472b6;
+    }
+
+    /* Footer */
+    footer {
+      width: 100%;
+      background: linear-gradient(to right, #1e293b, #1e3a8a);
+      color: white;
+      padding: 24px 16px;
+      text-align: center;
+      border-top: 1px solid rgba(34, 211, 238, 0.2);
+    }
+
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 12px;
+    }
+
+    .footer-text {
+      font-size: 14px;
+      color: #cbd5e1;
+    }
+
+    .footer-tagline {
+      font-size: 12px;
+      color: rgba(34, 211, 238, 0.8);
+      margin-top: 8px;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #22d3ee;
+      color: #0f172a;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: bold;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      animation: slideIn 0.3s ease-out;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(400px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    /* Responsive */
+    @media (min-width: 640px) {
+      .logo { height: 40px; width: 40px; }
+      .contract-code { font-size: 12px; max-width: none; }
+      .main-image { width: 288px; height: 288px; }
+      .click-counter { width: 64px; height: 64px; font-size: 24px; }
+      .total-number { font-size: 80px; }
+      .badge { padding: 12px 24px; }
+      .badge-text { font-size: 14px; }
+      .about-link { font-size: 18px; }
+      .section-title { font-size: 48px; }
+      .card { padding: 24px; }
+      .card-title { font-size: 24px; }
+      .card-text { font-size: 16px; }
+      .showcase-title { font-size: 32px; }
+      .footer-text { font-size: 14px; }
+      .footer-tagline { font-size: 12px; }
+      
+      /* New responsive styles */
+      .hero-title { font-size: 56px; }
+      .hero-subtitle { font-size: 22px; }
+      .hero-cta-group { margin-top: 32px; }
+      .primary-cta-row { flex-direction: row; gap: 20px; }
+      .hero-section { padding: 64px 24px; }
+      .earning-card { padding: 40px 32px; }
+      .step-card { padding: 32px; }
+      .play-steps { grid-template-columns: repeat(2, 1fr); }
+      .earnings-grid { grid-template-columns: repeat(3, 1fr); }
+      
+      /* App features responsive */
+      .features-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .feature-card { padding: 24px; }
+      .feature-emoji { font-size: 40px; }
+    }
+
+    @media (min-width: 768px) {
+      .main-image { width: 320px; height: 320px; }
+      .total-number { font-size: 96px; }
+      
+      /* New responsive styles */
+      .hero-title { font-size: 64px; }
+      .hero-subtitle { font-size: 24px; }
+      .play-steps { grid-template-columns: repeat(4, 1fr); }
+      .rules-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+      .total-number { font-size: 112px; }
+      
+      /* New responsive styles */
+      .hero-title { font-size: 72px; }
+      .hero-subtitle { font-size: 26px; }
+      .hero-section { padding: 80px 32px; }
+    }
+
+    /* Mobile-specific styles */
+    @media (max-width: 639px) {
+      .hero-title { font-size: 32px; }
+      .hero-subtitle { font-size: 16px; }
+      .hero-cta-group { margin-top: 24px; }
+      .hero-section { padding: 32px 16px; }
+      
+      .upgrade-notice {
+        flex-direction: column;
+        gap: 8px;
+        padding: 10px 16px;
+        font-size: 13px;
+      }
+      
+      .staking-info {
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px 16px;
+      }
+      
+      .staking-arrow {
+        transform: rotate(90deg);
+      }
+      
+      .staking-step {
+        font-size: 13px;
+      }
+      
+      .upgrade-details-section {
+        padding: 32px 16px;
+      }
+      
+      .upgrade-details-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      
+      .detail-card {
+        padding: 20px;
+      }
+      
+      .detail-icon {
+        font-size: 32px;
+      }
+      
+      .detail-title {
+        font-size: 18px;
+      }
+      
+      /* App features mobile responsive */
+      .features-grid { grid-template-columns: 1fr; gap: 20px; }
+      .feature-card { padding: 20px; }
+      .feature-emoji { font-size: 36px; }
+      .feature-title { font-size: 20px; }
+      .feature-desc { font-size: 14px; }
+      .feature-highlights { gap: 8px; }
+      .highlight-item { padding: 6px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="header-top">
+        <div>
+          <img src="./assets/logo.jpg" alt="Popcow Logo" class="logo">
+        </div>
+        <div class="header-actions">
+          <button class="lang-btn" onclick="toggleLanguage()">
+            <span id="langText">中文</span>
+          </button>
+          <a href="https://x.com/popcowxyz" target="_blank" rel="noopener noreferrer" class="social-link">
+            <svg class="social-icon" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+            </svg>
+          </a>
+          <a href="https://t.me/popcowxyz" target="_blank" rel="noopener noreferrer" class="social-link">
+            <svg class="social-icon" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div class="contract-address">
+        <code class="contract-code">8mrMRf8QwGh5bSrgzKsMmHPTTGqDcENU91SWuXEypump</code>
+        <button class="copy-btn" onclick="copyAddress('contract')">
+          <svg width="16" height="16" fill="none" stroke="#22d3ee" stroke-width="2" viewBox="0 0 24 24">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content - 应用引流和玩法介绍 -->
+    <main>
+      <!-- 预加载点击图片 -->
+      <img src="./assets/mouth-open-click.jpg" style="display:none;">
+      
+      <!-- Hero Section - 应用功能展示 -->
+      <section class="hero-section">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            <span data-zh="Popcow Defi - 质押升级，点击挖矿" data-en="Popcow Defi - Stake to Upgrade, Click to Mine">Popcow Defi - 质押升级，点击挖矿</span>
+          </h1>
+          <p class="hero-subtitle">
+            <span data-zh="质押您的 $POPCOW 代币，兑换 Popcow Defi 应用代币，开启全新点击挖矿体验！" data-en="Stake your $POPCOW tokens, exchange for Popcow Defi app tokens, start a new click-to-mine experience!">质押您的 $POPCOW 代币，兑换 Popcow Defi 应用代币，开启全新点击挖矿体验！</span>
+          </p>
+          
+          <!-- 升级提示和入口按钮 -->
+          <div class="hero-cta-group">
+            <div class="upgrade-notice">
+              <span class="upgrade-badge">UPGRADE</span>
+              <span data-zh="Popcow 升级为 Popcow Defi！质押老代币即可兑换新应用代币" data-en="Popcow upgrades to Popcow Defi! Stake old tokens to exchange for new app tokens">Popcow 升级为 Popcow Defi！质押老代币即可兑换新应用代币</span>
+            </div>
+            <div class="staking-info">
+              <div class="staking-step">
+                <span class="step-icon">1️⃣</span>
+                <span data-zh="质押您的 $POPCOW 代币" data-en="Stake your $POPCOW tokens">质押您的 $POPCOW 代币</span>
+              </div>
+              <div class="staking-arrow">→</div>
+              <div class="staking-step">
+                <span class="step-icon">2️⃣</span>
+                <span data-zh="获得 Popcow Defi 应用代币" data-en="Receive Popcow Defi app tokens">获得 Popcow Defi 应用代币</span>
+              </div>
+            </div>
+            <a href="https://app.popcow.xyz/" target="_blank" rel="noopener noreferrer" class="primary-cta">
+              <span data-zh="进入 Popcow Defi" data-en="Enter Popcow Defi">进入 Popcow Defi</span>
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Popcow Defi 升级说明 -->
+      <section class="upgrade-details-section">
+        <h2 class="section-title">
+          <span>🪙</span>
+          <span data-zh="Popcow Defi 升级详情" data-en="Popcow Defi Upgrade Details">Popcow Defi 升级详情</span>
+          <span>🪙</span>
+        </h2>
+        
+        <div class="upgrade-details-grid">
+          <!-- 质押说明 -->
+          <div class="detail-card">
+            <div class="detail-icon">🔒</div>
+            <h3 class="detail-title" data-zh="质押机制" data-en="Staking Mechanism">质押机制</h3>
+            <p class="detail-desc" data-zh="将您持有的 $POPCOW 代币质押到智能合约，即可按比例获得 Popcow Defi 应用代币。质押过程安全透明，链上可查。" data-en="Stake your $POPCOW tokens to the smart contract to receive Popcow Defi app tokens proportionally. The staking process is secure, transparent, and verifiable on-chain.">将您持有的 $POPCOW 代币质押到智能合约，即可按比例获得 Popcow Defi 应用代币。质押过程安全透明，链上可查。</p>
+            <div class="detail-info">
+              <span class="info-tag">合约地址</span>
+              <code class="info-code">8mrMRf...pump</code>
+            </div>
+          </div>
+
+          <!-- Popcow Defi 代币用途 -->
+          <div class="detail-card">
+            <div class="detail-icon">✨</div>
+            <h3 class="detail-title" data-zh="Popcow Defi 用途" data-en="Popcow Defi Usage">Popcow Defi 用途</h3>
+            <p class="detail-desc" data-zh="Popcow Defi 是应用内的核心代币，用于点击挖矿奖励、排行榜奖励、邀请返佣等。持有越多，收益越高！" data-en="Popcow Defi is the core token in the app, used for click mining rewards, leaderboard rewards, referral commissions, etc. The more you hold, the higher your earnings!">Popcow Defi 是应用内的核心代币，用于点击挖矿奖励、排行榜奖励、邀请返佣等。持有越多，收益越高！</p>
+            <ul class="detail-list">
+              <li data-zh="🎮 点击挖矿奖励" data-en="🎮 Click Mining Rewards">🎮 点击挖矿奖励</li>
+              <li data-zh="🏆 排行榜奖励" data-en="🏆 Leaderboard Rewards">🏆 排行榜奖励</li>
+              <li data-zh="👥 邀请返佣" data-en="👥 Referral Commissions">👥 邀请返佣</li>
+            </ul>
+          </div>
+
+          <!-- 升级优势 -->
+          <div class="detail-card">
+            <div class="detail-icon">🚀</div>
+            <h3 class="detail-title" data-zh="升级优势" data-en="Upgrade Benefits">升级优势</h3>
+            <p class="detail-desc" data-zh="Popcow Defi 全新升级，性能更强、体验更流畅、收益更丰厚。老用户优先享受升级福利！" data-en="Popcow Defi is a brand new upgrade with better performance, smoother experience, and more generous rewards. Old users enjoy priority upgrade benefits!">Popcow Defi 全新升级，性能更强、体验更流畅、收益更丰厚。老用户优先享受升级福利！</p>
+            <ul class="detail-list">
+              <li data-zh="⚡ 更快的交易速度" data-en="⚡ Faster Transaction Speed">⚡ 更快的交易速度</li>
+              <li data-zh="💰 更高的挖矿收益" data-en="💰 Higher Mining Rewards">💰 更高的挖矿收益</li>
+              <li data-zh="🎁 老用户专属福利" data-en="🎁 Exclusive Benefits for Old Users">🎁 老用户专属福利</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 应用功能展示 -->
+      <section id="app-features" class="app-features-section">
+        <h2 class="section-title">
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="color: #fbbf24;">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          <span data-zh="应用核心功能" data-en="Core App Features">应用核心功能</span>
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="color: #fbbf24;">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        </h2>
+        
+        <div class="features-grid">
+          <!-- 点击挖矿功能 -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <div class="icon-wrapper">
+                <span class="feature-emoji">🖱️</span>
+                <div class="icon-glow"></div>
+              </div>
+            </div>
+            <h3 class="feature-title">
+              <span data-zh="点击挖矿" data-en="Click Mining">点击挖矿</span>
+            </h3>
+            <p class="feature-desc">
+              <span data-zh="简单点击即可获得$POPCOW代币奖励，支持连击加成，让每一次点击都有价值！" data-en="Simple clicking to earn $POPCOW token rewards, supports combo multipliers, making every click valuable!">简单点击即可获得$POPCOW代币奖励，支持连击加成，让每一次点击都有价值！</span>
+            </p>
+            <div class="feature-highlights">
+              <div class="highlight-item">
+                <span class="highlight-icon">⚡</span>
+                <span class="highlight-text">连击奖励 x5</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">💎</span>
+                <span class="highlight-text">实时到账</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">🎯</span>
+                <span class="highlight-text">每日任务</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 钱包管理功能 -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <div class="icon-wrapper">
+                <span class="feature-emoji">👛</span>
+                <div class="icon-glow"></div>
+              </div>
+            </div>
+            <h3 class="feature-title">
+              <span data-zh="钱包管理" data-en="Wallet Management">钱包管理</span>
+            </h3>
+            <p class="feature-desc">
+              <span data-zh="支持主流Web3钱包，安全便捷，一键连接，轻松管理你的数字资产！" data-en="Supports mainstream Web3 wallets, secure and convenient, one-click connection, easily manage your digital assets!">支持主流Web3钱包，安全便捷，一键连接，轻松管理你的数字资产！</span>
+            </p>
+            <div class="feature-highlights">
+              <div class="highlight-item">
+                <span class="highlight-icon">🔐</span>
+                <span class="highlight-text">安全加密</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">�</span>
+                <span class="highlight-text">多链支持</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">📊</span>
+                <span class="highlight-text">余额查询</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 排行榜功能 -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <div class="icon-wrapper">
+                <span class="feature-emoji">🏆</span>
+                <div class="icon-glow"></div>
+              </div>
+            </div>
+            <h3 class="feature-title">
+              <span data-zh="全球排行榜" data-en="Global Leaderboard">全球排行榜</span>
+            </h3>
+            <p class="feature-desc">
+              <span data-zh="实时全球排名，展示顶级玩家，竞争丰厚奖励，成为点击挖矿冠军！" data-en="Real-time global rankings, showcase top players, compete for generous rewards, become the click mining champion!">实时全球排名，展示顶级玩家，竞争丰厚奖励，成为点击挖矿冠军！</span>
+            </p>
+            <div class="feature-highlights">
+              <div class="highlight-item">
+                <span class="highlight-icon">🌍</span>
+                <span class="highlight-text">全球排名</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">🎁</span>
+                <span class="highlight-text">特殊奖励</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">📈</span>
+                <span class="highlight-text">历史记录</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 邀请系统功能 -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <div class="icon-wrapper">
+                <span class="feature-emoji">👥</span>
+                <div class="icon-glow"></div>
+              </div>
+            </div>
+            <h3 class="feature-title">
+              <span data-zh="邀请系统" data-en="Referral System">邀请系统</span>
+            </h3>
+            <p class="feature-desc">
+              <span data-zh="邀请好友获得10%收益分成，建立你的挖矿团队，享受持续被动收入！" data-en="Invite friends to get 10% revenue sharing, build your mining team, enjoy continuous passive income!">邀请好友获得10%收益分成，建立你的挖矿团队，享受持续被动收入！</span>
+            </p>
+            <div class="feature-highlights">
+              <div class="highlight-item">
+                <span class="highlight-icon">💰</span>
+                <span class="highlight-text">10%分成</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">📊</span>
+                <span class="highlight-text">团队统计</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">🎯</span>
+                <span class="highlight-text">无限层级</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 代币兑换功能 -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <div class="icon-wrapper">
+                <span class="feature-emoji">💱</span>
+                <div class="icon-glow"></div>
+              </div>
+            </div>
+            <h3 class="feature-title">
+              <span data-zh="代币兑换" data-en="Token Exchange">代币兑换</span>
+            </h3>
+            <p class="feature-desc">
+              <span data-zh="灵活兑换$POPCOW代币，支持多种交易对，实时汇率，低手续费！" data-en="Flexible exchange of $POPCOW tokens, supports multiple trading pairs, real-time rates, low fees!">灵活兑换$POPCOW代币，支持多种交易对，实时汇率，低手续费！</span>
+            </p>
+            <div class="feature-highlights">
+              <div class="highlight-item">
+                <span class="highlight-icon">⚡</span>
+                <span class="highlight-text">即时兑换</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">💎</span>
+                <span class="highlight-text">最优汇率</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">🔒</span>
+                <span class="highlight-text">安全保障</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 数据统计功能 -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <div class="icon-wrapper">
+                <span class="feature-emoji">📊</span>
+                <div class="icon-glow"></div>
+              </div>
+            </div>
+            <h3 class="feature-title">
+              <span data-zh="数据统计" data-en="Data Analytics">数据统计</span>
+            </h3>
+            <p class="feature-desc">
+              <span data-zh="详细的收益统计，点击数据分析，帮助你优化挖矿策略，最大化收益！" data-en="Detailed earnings statistics, click data analysis, help you optimize mining strategy, maximize returns!">详细的收益统计，点击数据分析，帮助你优化挖矿策略，最大化收益！</span>
+            </p>
+            <div class="feature-highlights">
+              <div class="highlight-item">
+                <span class="highlight-icon">📈</span>
+                <span class="highlight-text">收益图表</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">📱</span>
+                <span class="highlight-text">移动端支持</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">📋</span>
+                <span class="highlight-text">详细报表</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+    </main>
+
+    <!-- Showcase Section -->
+    <section class="showcase-section">
+      <div class="showcase-container">
+        <h2 class="showcase-title">
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="color: #22d3ee;">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          <span data-zh="精彩展示" data-en="Showcase">精彩展示</span>
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="color: #22d3ee;">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        </h2>
+        <div class="showcase-grid">
+          <div class="showcase-item">
+            <img src="./assets/showcase-5.jpg" alt="Showcase 1" class="showcase-image">
+            <div class="showcase-overlay"></div>
+          </div>
+          <div class="showcase-item">
+            <img src="./assets/showcase-6.jpg" alt="Showcase 2" class="showcase-image">
+            <div class="showcase-overlay"></div>
+          </div>
+          <div class="showcase-item">
+            <img src="./assets/showcase-7.jpg" alt="Showcase 3" class="showcase-image">
+            <div class="showcase-overlay"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Charity Section -->
+    <section class="charity-section">
+      <div class="charity-container">
+        <h2 class="charity-title">
+          <svg class="heart-icon" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+          <span data-zh="公益募捐" data-en="Charity Drive">公益募捐</span>
+          <svg class="heart-icon" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </h2>
+        
+        <p class="charity-subtitle">
+          <span data-zh="Popcow公益募捐：助力深陷战火苦难、饱受病痛折磨的孩童，以爱为他们照亮前路。" data-en="Popcow Charity Drive: For children trapped in war suffering and plagued by illness, love lights up their way.">Popcow公益募捐：助力深陷战火苦难、饱受病痛折磨的孩童，以爱为他们照亮前路。</span>
+        </p>
+
+        <p class="charity-description">
+          <span data-zh="每一份捐赠都将直接用于帮助那些在战争和疾病中挣扎的儿童，为他们提供医疗援助、教育支持和生活必需品。让我们携手共建一个充满希望的未来。" data-en="Every donation will directly help children struggling with war and disease, providing medical aid, educational support, and essential supplies. Let's build a hopeful future together.">每一份捐赠都将直接用于帮助那些在战争和疾病中挣扎的儿童，为他们提供医疗援助、教育支持和生活必需品。让我们携手共建一个充满希望的未来。</span>
+        </p>
+
+        <div class="donation-addresses">
+          <div class="address-item">
+            <div class="address-label">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/>
+              </svg>
+              <span data-zh="SOL地址" data-en="SOL Address">SOL地址</span>
+            </div>
+            <div class="address-value">
+              <span class="address-text" id="solAddress">AAYciGXbqNLkk6nSggG7JdFEWPwWaPEjv491ZRHQRQt</span>
+              <button class="charity-copy-btn" onclick="copyAddress('sol')">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <span data-zh="复制" data-en="Copy">复制</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="address-item">
+            <div class="address-label">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+              <span data-zh="POPCOW地址" data-en="POPCOW Address">POPCOW地址</span>
+            </div>
+            <div class="address-value">
+              <span class="address-text" id="popcowAddress">AAYciGXbqNLkk6nSggG7JdFEWPwWaPEjv491ZRHQRQt</span>
+              <button class="charity-copy-btn" onclick="copyAddress('popcow')">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <span data-zh="复制" data-en="Copy">复制</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-social">
+        <a href="https://x.com/popcowxyz" target="_blank" rel="noopener noreferrer" class="social-link">
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="color: #22d3ee;">
+            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+          </svg>
+        </a>
+        <a href="https://t.me/popcowxyz" target="_blank" rel="noopener noreferrer" class="social-link">
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="color: #22d3ee;">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/>
+          </svg>
+        </a>
+      </div>
+      <p class="footer-tagline">
+        <span data-zh="社区驱动 · 价值共生" data-en="Community Driven · Value Symbiosis">社区驱动 · 价值共生</span>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+        // 状态
+    let currentLang = 'en'; // 当前语言状态
+    let isClicking = false; // 是否正在点击
+    let clickCount = 0; // 用户个人点击数，每次刷新页面都会重置
+    let totalClicks = 0; // 总点击数（从 Redis 获取后赋值）
+    let isThrottled = false;
+    
+    // 合约地址
+    const contractAddress = '8mrMRf8QwGh5bSrgzKsMmHPTTGqDcENU91SWuXEypump';
+    const solAddress = 'AAYciGXbqNLkk6nSggG7JdFEWPwWaPEjv491ZRHQRQt';
+    const popcowAddress = 'AAYciGXbqNLkk6nSggG7JdFEWPwWaPEjv491ZRHQRQt';
+    
+    // 页面加载时获取数据
+    async function loadData() {
+        try {
+            // 从 Redis 获取 totalClicks 初始化
+            const response = await fetch('counter-redis.php?action=read');
+            const data = await response.json();
+    
+            if (data.status === 'success') {
+                totalClicks = data.value; // 从 Redis 获取 totalClicks 的初始值
+                updateTotalClicks();
+            } else {
+                console.error('Error reading totalClicks from Redis:', data.message || 'Unknown error');
+            }
+    
+            // 强制清零 clickCount
+            clickCount = 0; // 每次刷新时重置为 0
+            document.getElementById('clickCount').textContent = clickCount; // 更新 HTML 中的数据
+    
+        } catch (error) {
+            console.error('Error loading totalClicks:', error);
+        }
+    
+        // 设置页面内容的初始语言为英文
+        document.querySelectorAll('[data-zh][data-en]').forEach(el => {
+            el.textContent = el.getAttribute('data-en');
+        });
+    }
+    
+    // 保存 totalClicks 到 Redis
+    async function syncTotalClicks() {
+        try {
+            const response = await fetch('counter-redis.php?action=sync', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ totalClicks }), // 将 totalClicks 发到后端
+            });
+    
+            const data = await response.json();
+    
+            if (data.status !== 'success') {
+                console.error('Failed to sync totalClicks with Redis:', data.message || 'Unknown error');
+            }
+        } catch (error) {
+            console.error('Error syncing totalClicks with Redis:', error);
+        }
+    }
+    
+    // 实现点击事件逻辑
+    function startClick() {
+        if (isThrottled) return; // 如果节流中，则直接退出
+        isClicking = true;
+        document.getElementById('mainImage').src = './assets/mouth-open-click.jpg';
+    }
+    
+    function endClick() {
+        if (isThrottled) return; // 如果在节流时间内，直接返回
+    
+        isThrottled = true; // 开始节流
+        setTimeout(() => {
+            isThrottled = false; // 节流结束
+        }, 100); // 防止过快点击，限制每 100ms 触发一次
+        if (isClicking) {
+            // 更新本地变量的计数
+            clickCount++; // 点击次数仅存储在内存中，不保存
+            totalClicks++; // 总点击数由 Redis 保存
+            document.getElementById('clickCount').textContent = clickCount;
+            updateTotalClicks();
+    
+            // 同步到 Redis
+            syncTotalClicks();
+        }
+        cancelClick();
+    }
+    
+    function cancelClick() {
+        isClicking = false;
+        document.getElementById('mainImage').src = './assets/mouth-closed.jpg';
+    }
+    
+    // 更新页面上的总点击数
+    function updateTotalClicks() {
+        document.getElementById('totalClicks').textContent = totalClicks.toLocaleString();
+    }
+    
+    // 切换语言功能
+    function toggleLanguage() {
+        currentLang = currentLang === 'zh' ? 'en' : 'zh'; // 切换语言
+        document.getElementById('langText').textContent = currentLang === 'zh' ? 'EN' : '中文';
+    
+        // 更新页面中的所有多语言文本
+        document.querySelectorAll('[data-zh][data-en]').forEach(el => {
+            el.textContent = el.getAttribute('data-' + currentLang);
+        });
+    }
+    
+    // Copy address
+    // function copyAddress() {
+    //   navigator.clipboard.writeText(contractAddress).then(() => {
+    //     showToast(currentLang === 'zh' ? '已复制!' : 'Copied!');
+    //   }).catch(() => {
+    //     showToast('Failed to copy');
+    //   });
+    // }
+    
+    // Show toast
+    function showToast(message) {
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      
+      setTimeout(() => {
+        toast.remove();
+      }, 2000);
+    }
+    
+    // Copy address
+    function copyAddress(type) {
+      let addressToCopy = '';
+      
+      if (type === 'contract') {
+        addressToCopy = contractAddress;
+      } else if (type === 'sol') {
+        addressToCopy = solAddress;
+      } else if (type === 'popcow') {
+        addressToCopy = popcowAddress;
+      }
+      
+      navigator.clipboard.writeText(addressToCopy).then(() => {
+        showToast(currentLang === 'zh' ? '已复制!' : 'Copied!');
+      }).catch(() => {
+        showToast('Failed to copy');
+      });
+    }
+    
+    // 初始化页面
+    loadData();
+
+
+  </script>
+</body>
+</html>
