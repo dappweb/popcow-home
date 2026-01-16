@@ -1,135 +1,135 @@
 # Popcow
 
-**全球首创点击挖矿模因币 - 点击即收益，共识创价值**
+**World's First Click-to-Mine Meme Coin - Click to Earn, Consensus Creates Value**
 
-Popcow 是一个创新的模因代币项目，通过简单的点击互动让用户获得代币奖励。项目结合了模因文化的传播力和区块链的价值创造，为用户提供有趣的赚钱体验。
+Popcow is an innovative meme token project that rewards users with tokens through simple click interactions. The project combines the viral power of meme culture with blockchain value creation, providing users with an engaging earning experience.
 
-## 🚀 快速开始
+## 🚀 Quick Start
 
-### 前置要求
+### Prerequisites
 
-- Python 3.x (用于本地服务器)
-- 现代浏览器 (支持 Web3)
-- 钱包应用 (MetaMask, Phantom 等)
+- Python 3.x (for local server)
+- Modern browser (Web3 support)
+- Wallet app (MetaMask, Phantom, etc.)
 
-### 本地运行
+### Local Development
 
 ```bash
-# 克隆仓库
+# Clone repository
 git clone https://github.com/your-org/popcow-home.git
 cd popcow-home
 
-# 启动本地服务器
+# Start local server
 cd scripts
 start-server.bat
 
-# 或手动启动
+# Or manually start
 python -m http.server 8000
 ```
 
-### 访问地址
+### Access URLs
 
-- **首页**: http://localhost:8000
-- **应用**: https://app.popcow.xyz/
+- **Homepage**: http://localhost:8000
+- **App**: https://app.popcow.xyz/
 
-## 🎮 核心玩法
+## 🎮 Core Features
 
-### 点击挖矿
-- 🖱️ 点击奶牛图片获得 $POPCOW 代币
-- ⚡ 连击奖励机制
-- 📊 实时统计展示
+### Click Mining
+- 🖱️ Click the cow image to earn $POPCOW tokens
+- ⚡ Combo reward mechanism
+- 📊 Real-time statistics display
 
-### 邀请奖励
-- 👥 邀请好友获得 10% 收益分成
-- 🔗 专属邀请链接
-- 📈 多级奖励系统
+### Referral Rewards
+- 👥 Invite friends to earn 10% revenue share
+- 🔗 Exclusive referral links
+- 📈 Multi-level reward system
 
-### 排行榜系统
-- 🏆 全球玩家排名
-- 🎯 前 100 名特殊奖励
-- 📅 每日/每周/每月排行
+### Leaderboard System
+- 🏆 Global player rankings
+- 🎯 Top 100 special rewards
+- 📅 Daily/Weekly/Monthly rankings
 
-## 📚 文档
+## 📚 Documentation
 
-详细文档请查看 [docs/](./docs/) 目录：
+See the [docs/](./docs/) directory for detailed documentation:
 
-- [项目结构说明](./PROJECT_STRUCTURE.md) - 完整的项目架构
-- [Popcow白皮书](./docs/Popcow-Whitepaper.md) - 技术白皮书和项目愿景
-- [设置指南](./docs/SETUP_GUIDE.md) - 初始设置和配置
-- [部署指南](./docs/DEPLOYMENT_GUIDE.md) - 生产环境部署
-- [生产检查清单](./docs/PRODUCTION_CHECKLIST.md) - 部署前检查
-- [功能可用性报告](./docs/FUNCTIONAL_AVAILABILITY_REPORT.md) - 功能状态
-- [任务跟踪](./docs/TASKS.md) - 开发进度和任务
+- [Project Structure](./PROJECT_STRUCTURE.md) - Complete project architecture
+- [Popcow Whitepaper](./docs/Popcow-Whitepaper.md) - Technical whitepaper and project vision
+- [Setup Guide](./docs/SETUP_GUIDE.md) - Initial setup and configuration
+- [Deployment Guide](./docs/DEPLOYMENT_GUIDE.md) - Production deployment
+- [Production Checklist](./docs/PRODUCTION_CHECKLIST.md) - Pre-deployment checklist
+- [Functional Availability Report](./docs/FUNCTIONAL_AVAILABILITY_REPORT.md) - Feature status
+- [Task Tracker](./docs/TASKS.md) - Development progress and tasks
 
-## 🏗️ 项目结构
+## 🏗️ Project Structure
 
 ```
 popcow-home/
-├── README.md                    # 项目说明文档
-├── PROJECT_STRUCTURE.md         # 项目结构详细说明
-├── index.html                   # 主页面 (应用引流页面)
-├── assets/                      # 静态资源 (图片、图标等)
-├── docs/                        # 📚 项目文档
-├── backup/                      # 💾 备份文件
-├── config/                      # ⚙️ 配置文件
-├── scripts/                     # 📜 脚本文件
-└── dist/                        # 📦 构建输出
+├── README.md                    # Project documentation
+├── PROJECT_STRUCTURE.md         # Detailed project structure
+├── index.html                   # Main page (app landing page)
+├── assets/                      # Static resources (images, icons, etc.)
+├── docs/                        # 📚 Project documentation
+├── backup/                      # 💾 Backup files
+├── config/                      # ⚙️ Configuration files
+├── scripts/                     # 📜 Script files
+└── dist/                        # 📦 Build output
 ```
 
-## ✨ 核心功能
+## ✨ Core Features
 
-### 首页功能
-- ✅ **多语言支持** - 中英文切换
-- ✅ **点击互动** - 奶牛点击演示
-- ✅ **应用引流** - 多个入口指向应用
-- ✅ **收益展示** - 清晰的赚钱机会
-- ✅ **玩法教程** - 4步快速上手
-- ✅ **响应式设计** - 适配各种设备
+### Homepage Features
+- ✅ **Multi-language Support** - English/Chinese toggle
+- ✅ **Click Interaction** - Cow click demonstration
+- ✅ **App Redirect** - Multiple entry points to app
+- ✅ **Earnings Display** - Clear earning opportunities
+- ✅ **Tutorial** - 4-step quick start guide
+- ✅ **Responsive Design** - Adapts to all devices
 
-### 应用功能 (app.popcow.xyz)
-- 🔄 **钱包连接** - 支持主流 Web3 钱包
-- 🔄 **点击挖矿** - 实时代币奖励
-- 🔄 **邀请系统** - 多级奖励机制
-- 🔄 **排行榜** - 全球玩家竞争
-- 🔄 **代币管理** - 提取和交易
+### App Features (app.popcow.xyz)
+- 🔄 **Wallet Connection** - Support for mainstream Web3 wallets
+- 🔄 **Click Mining** - Real-time token rewards
+- 🔄 **Referral System** - Multi-level reward mechanism
+- 🔄 **Leaderboard** - Global player competition
+- 🔄 **Token Management** - Withdraw and trade
 
-## 🔗 重要链接
+## 🔗 Important Links
 
-- **官网**: https://popcow.xyz
-- **应用**: https://app.popcow.xyz
+- **Website**: https://popcow.xyz
+- **App**: https://app.popcow.xyz
 - **Twitter**: https://x.com/popcowxyz
 - **Telegram**: https://t.me/popcowxyz
-- **合约地址**: `8mrMRf8QwGh5bSrgzKsMmHPTTGqDcENU91SWuXEypump`
+- **Contract Address**: `8mrMRf8QwGh5bSrgzKsMmHPTTGqDcENU91SWuXEypump`
 
-## 🎯 设计理念
+## 🎯 Design Philosophy
 
-### 社区驱动
-- 🤝 每一位用户都是生态共建者
-- 🌍 全球化社区运营
-- 🎪 模因文化传播
+### Community-Driven
+- 🤝 Every user is an ecosystem builder
+- 🌍 Global community operations
+- 🎪 Meme culture propagation
 
-### 透明开放
-- 🔍 无控盘、无隐藏套路
-- 📊 实时数据公开透明
-- ⚖️ 公平的奖励机制
+### Transparent & Open
+- 🔍 No market manipulation, no hidden tricks
+- 📊 Real-time transparent data
+- ⚖️ Fair reward mechanism
 
-### 简单易用
-- 👆 一键点击开始赚钱
-- 📱 移动端友好设计
-- 🚀 零门槛快速上手
+### Simple & Easy
+- 👆 One-click to start earning
+- 📱 Mobile-friendly design
+- 🚀 Zero-barrier quick start
 
-## 🛠️ 技术栈
+## 🛠️ Tech Stack
 
-- **前端**: HTML5, CSS3, JavaScript
-- **后端**: PHP, Redis
-- **部署**: Cloudflare Pages
-- **区块链**: Solana/EVM 兼容
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Backend**: PHP, Redis
+- **Deployment**: Cloudflare Pages
+- **Blockchain**: Solana/EVM compatible
 
-## 📄 许可证
+## 📄 License
 
 MIT License
 
 ---
 
-**最后更新**: 2026-01-14  
-**版本**: v2.0 (应用引流重构版)
+**Last Updated**: 2026-01-14  
+**Version**: v2.0 (App Landing Page Refactor)

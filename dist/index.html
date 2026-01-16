@@ -1,25 +1,16 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="./assets/logo.jpg" type="image/jpg">
-  <title>Popcow - Consensus drives value, memes lead the trend</title>
-  <meta name="description" content="Popcow - Community-driven native token, consensus drives value, memes lead the trend">
+    <link rel="icon" href="./assets/logo.jpg" type="image/jpg">
+  <title>Popcow Defi - Stake to Upgrade, Click to Mine</title>
+  <meta name="description" content="Popcow upgrades to Popcow Defi! Stake old tokens to exchange for new app tokens, start a new click-to-mine experience!">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }
-
-    :root {
-      --primary-cyan: #22d3ee;
-      --secondary-purple: #a855f7;
-      --accent-amber: #fbbf24;
-      --success-green: #10b981;
-      --warning-orange: #f59e0b;
-      --error-red: #ef4444;
     }
 
     body {
@@ -35,45 +26,6 @@
       min-height: 100vh;
     }
 
-    /* Activity Banner */
-    .activity-banner {
-      background: linear-gradient(135deg, var(--warning-orange), var(--accent-amber));
-      padding: 12px 16px;
-      text-align: center;
-      animation: pulse 2s infinite;
-    }
-
-    .activity-content {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .activity-title {
-      font-weight: bold;
-      color: #0f172a;
-    }
-
-    .activity-desc {
-      color: #1e293b;
-      font-size: 14px;
-    }
-
-    .countdown {
-      background: rgba(15, 23, 42, 0.8);
-      color: var(--accent-amber);
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-family: 'Courier New', monospace;
-      font-weight: bold;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.8; }
-    }
     /* Header */
     header {
       background: rgba(30, 41, 59, 0.8);
@@ -103,23 +55,6 @@
       display: flex;
       align-items: center;
       gap: 8px;
-    }
-
-    .app-link {
-      background: linear-gradient(135deg, var(--primary-cyan), var(--secondary-purple));
-      color: white;
-      padding: 8px 16px;
-      border-radius: 20px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 14px;
-      transition: all 0.3s;
-      box-shadow: 0 4px 8px rgba(34, 211, 238, 0.3);
-    }
-
-    .app-link:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(34, 211, 238, 0.4);
     }
 
     .lang-btn {
@@ -153,160 +88,45 @@
       height: 20px;
       color: #22d3ee;
     }
-    /* Data Dashboard */
-    .data-dashboard {
-      background: rgba(30, 41, 59, 0.6);
-      backdrop-filter: blur(12px);
-      padding: 16px;
-      border-bottom: 1px solid rgba(34, 211, 238, 0.2);
-    }
 
-    .dashboard-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .dashboard-card {
-      background: rgba(15, 23, 42, 0.8);
-      padding: 16px;
-      border-radius: 12px;
-      border: 1px solid rgba(34, 211, 238, 0.3);
-      text-align: center;
-      transition: all 0.3s;
-    }
-
-    .dashboard-card:hover {
-      border-color: rgba(34, 211, 238, 0.6);
-      transform: translateY(-2px);
-    }
-
-    .dashboard-label {
-      font-size: 12px;
-      color: #94a3b8;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .dashboard-value {
-      font-size: 24px;
-      font-weight: 900;
-      color: var(--primary-cyan);
-      margin-bottom: 4px;
-    }
-
-    .dashboard-change {
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    .dashboard-change.positive {
-      color: var(--success-green);
-    }
-
-    .dashboard-change.negative {
-      color: var(--error-red);
-    }
-
-    /* Leaderboard */
-    .leaderboard-section {
-      background: rgba(30, 41, 59, 0.4);
-      padding: 24px 16px;
-      border-bottom: 1px solid rgba(34, 211, 238, 0.2);
-    }
-
-    .leaderboard-container {
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .leaderboard-title {
-      text-align: center;
-      font-size: 24px;
-      font-weight: 900;
-      color: var(--primary-cyan);
-      margin-bottom: 24px;
-    }
-
-    .leaderboard-tabs {
+    .contract-address {
       display: flex;
+      align-items: center;
       justify-content: center;
       gap: 8px;
-      margin-bottom: 24px;
-    }
-
-    .tab-btn {
       background: rgba(15, 23, 42, 0.6);
+      padding: 8px 12px;
+      border-radius: 8px;
       border: 1px solid rgba(34, 211, 238, 0.3);
-      color: #94a3b8;
-      padding: 8px 16px;
-      border-radius: 20px;
-      cursor: pointer;
-      transition: all 0.3s;
-      font-size: 14px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
-    .tab-btn.active {
-      background: var(--primary-cyan);
-      color: #0f172a;
-      border-color: var(--primary-cyan);
-    }
-
-    .leaderboard-list {
-      background: rgba(15, 23, 42, 0.6);
-      border-radius: 12px;
+    .contract-code {
+      font-family: 'Courier New', monospace;
+      font-size: 12px;
+      color: #22d3ee;
+      font-weight: 600;
       overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      max-width: 200px;
     }
 
-    .leaderboard-item {
+    .copy-btn {
+      background: none;
+      border: none;
+      padding: 6px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background 0.3s;
       display: flex;
       align-items: center;
-      padding: 12px 16px;
-      border-bottom: 1px solid rgba(34, 211, 238, 0.1);
     }
 
-    .leaderboard-item:last-child {
-      border-bottom: none;
+    .copy-btn:hover {
+      background: rgba(34, 211, 238, 0.2);
     }
 
-    .rank {
-      width: 40px;
-      font-weight: bold;
-      color: var(--accent-amber);
-    }
-
-    .user-info {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .user-avatar {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary-cyan), var(--secondary-purple));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 14px;
-      color: white;
-    }
-
-    .user-name {
-      color: #e2e8f0;
-      font-weight: 500;
-    }
-
-    .user-score {
-      color: var(--primary-cyan);
-      font-weight: bold;
-    }
     /* Main Content */
     main {
       flex: 1;
@@ -328,10 +148,17 @@
       user-select: none;
       transition: transform 0.1s;
       outline: none;
-      -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent;
     }
+    
+    .main-image-wrapper:focus {
+    outline: none;
+    box-shadow: none;
+}
 
     .main-image-wrapper:active {
+        outline: none;
+    box-shadow: none;
       transform: scale(0.95);
     }
 
@@ -363,306 +190,1095 @@
       pointer-events: none;
     }
 
-    /* App Entrance Section */
-    .app-entrance-section {
-      width: 100%;
-      max-width: 600px;
-      margin: 32px 0;
-    }
-
-    .app-cta-card {
-      background: linear-gradient(135deg, rgba(34, 211, 238, 0.1), rgba(168, 85, 247, 0.1));
-      backdrop-filter: blur(12px);
-      padding: 32px 24px;
-      border-radius: 16px;
-      border: 2px solid rgba(34, 211, 238, 0.3);
+    .total-clicks {
       text-align: center;
-      box-shadow: 0 8px 16px rgba(34, 211, 238, 0.2);
+      margin-bottom: 32px;
     }
 
-    .app-cta-card h3 {
-      font-size: 24px;
+    .total-number {
+      font-size: 56px;
       font-weight: 900;
-      color: var(--primary-cyan);
+      color: #22d3ee;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+    }
+
+    .feature-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 32px;
+      max-width: 768px;
+    }
+
+    .badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 24px;
+      border-radius: 9999px;
+      border: 2px solid;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .badge-cyan {
+      background: linear-gradient(to right, rgba(34, 211, 238, 0.2), rgba(59, 130, 246, 0.2));
+      border-color: rgba(34, 211, 238, 0.5);
+      box-shadow: 0 4px 6px rgba(34, 211, 238, 0.3);
+    }
+
+    .badge-purple {
+      background: linear-gradient(to right, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2));
+      border-color: rgba(168, 85, 247, 0.5);
+      box-shadow: 0 4px 6px rgba(168, 85, 247, 0.3);
+    }
+
+    .badge-amber {
+      background: linear-gradient(to right, rgba(251, 191, 36, 0.2), rgba(251, 146, 60, 0.2));
+      border-color: rgba(251, 191, 36, 0.5);
+      box-shadow: 0 4px 6px rgba(251, 191, 36, 0.3);
+    }
+
+    .badge-text {
+      font-size: 14px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-cyan .badge-text { color: #67e8f9; }
+    .badge-purple .badge-text { color: #d8b4fe; }
+    .badge-amber .badge-text { color: #fcd34d; }
+
+    .about-link {
+      color: #22d3ee;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+      text-decoration-color: rgba(34, 211, 238, 0.5);
+      transition: color 0.3s;
+    }
+
+    .about-link:hover {
+      color: #67e8f9;
+    }
+
+    /* Hero CTA */
+    .hero-cta-group {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      margin-top: 32px;
+    }
+
+    .upgrade-notice {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(251, 191, 36, 0.15);
+      border: 2px solid rgba(251, 191, 36, 0.5);
+      padding: 12px 20px;
+      border-radius: 12px;
+      color: #fcd34d;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      animation: notice-glow 2s ease-in-out infinite;
+    }
+
+    @keyframes notice-glow {
+      0%, 100% {
+        box-shadow: 0 0 10px rgba(251, 191, 36, 0.2);
+      }
+      50% {
+        box-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
+      }
+    }
+
+    .upgrade-badge {
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      color: #0f172a;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .staking-info {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(34, 211, 238, 0.1);
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      padding: 16px 24px;
+      border-radius: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .staking-step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #e2e8f0;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .step-icon {
+      font-size: 18px;
+    }
+
+    .staking-arrow {
+      color: #22d3ee;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    /* Upgrade Details Section */
+    .upgrade-details-section {
+      width: 100%;
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(34, 211, 238, 0.1));
+      backdrop-filter: blur(12px);
+      padding: 48px 16px;
+      border-top: 2px solid rgba(251, 191, 36, 0.3);
+      border-bottom: 2px solid rgba(251, 191, 36, 0.3);
+    }
+
+    .upgrade-details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .detail-card {
+      background: rgba(30, 41, 59, 0.9);
+      backdrop-filter: blur(12px);
+      padding: 28px;
+      border-radius: 16px;
+      border: 2px solid rgba(251, 191, 36, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .detail-card:hover {
+      border-color: rgba(251, 191, 36, 0.6);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(251, 191, 36, 0.15);
+    }
+
+    .detail-icon {
+      font-size: 40px;
+      margin-bottom: 16px;
+    }
+
+    .detail-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #fcd34d;
       margin-bottom: 12px;
     }
 
-    .app-cta-card p {
+    .detail-desc {
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    .detail-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(34, 211, 238, 0.2);
+    }
+
+    .info-tag {
+      font-size: 12px;
+      color: #94a3b8;
+      font-weight: 600;
+    }
+
+    .info-code {
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      color: #22d3ee;
+      font-weight: 600;
+    }
+
+    .detail-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .detail-list li {
+      font-size: 14px;
+      color: #e2e8f0;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(251, 191, 36, 0.1);
+    }
+
+    .detail-list li:last-child {
+      border-bottom: none;
+    }
+
+    /* Enhanced Demo */
+    .demo-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .demo-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .demo-container:hover .demo-overlay {
+      opacity: 1;
+    }
+
+    .demo-cta {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(34, 211, 238, 0.9);
+      color: #0f172a;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 14px;
+      backdrop-filter: blur(12px);
+      transition: all 0.3s ease;
+      pointer-events: all;
+    }
+
+    .demo-cta:hover {
+      background: rgba(34, 211, 238, 1);
+      transform: scale(1.05);
+    }
+    .hero-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 16px;
+      gap: 48px;
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 896px;
+    }
+
+    .hero-title {
+      font-size: 48px;
+      font-weight: 900;
+      color: #22d3ee;
+      margin-bottom: 16px;
+      line-height: 1.2;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+    }
+
+    .hero-subtitle {
+      font-size: 20px;
+      color: #cbd5e1;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .primary-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #22d3ee, #2563eb, #7c3aed);
+      color: white;
+      text-decoration: none;
+      padding: 16px 32px;
+      border-radius: 9999px;
+      font-weight: bold;
+      font-size: 18px;
+      box-shadow: 0 8px 32px rgba(34, 211, 238, 0.4);
+      border: 2px solid rgba(34, 211, 238, 0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      animation: pulse 2s infinite;
+    }
+
+    .primary-cta::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .primary-cta:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 12px 40px rgba(34, 211, 238, 0.6);
+      border-color: rgba(34, 211, 238, 0.6);
+    }
+
+    .primary-cta:hover::before {
+      left: 100%;
+    }
+
+    .primary-cta.large {
+      padding: 20px 40px;
+      font-size: 20px;
+    }
+
+    .secondary-cta {
+      color: #22d3ee;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 12px 24px;
+      border: 2px solid rgba(34, 211, 238, 0.5);
+      border-radius: 9999px;
+      transition: all 0.3s ease;
+    }
+
+    .secondary-cta:hover {
+      background: rgba(34, 211, 238, 0.1);
+      border-color: rgba(34, 211, 238, 0.8);
+      color: #67e8f9;
+    }
+
+    .hero-demo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .demo-stats {
+      text-align: center;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stat-number {
+      font-size: 48px;
+      font-weight: 900;
+      color: #22d3ee;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+    }
+
+    .stat-label {
+      font-size: 16px;
+      color: #cbd5e1;
+      font-weight: 600;
+    }
+
+    /* Earnings Showcase */
+    .earnings-showcase {
+      width: 100%;
+      background: rgba(30, 41, 59, 0.4);
+      backdrop-filter: blur(12px);
+      padding: 48px 16px;
+      border-top: 2px solid rgba(34, 211, 238, 0.2);
+    }
+
+    .earnings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 896px;
+      margin: 0 auto;
+    }
+
+    .earning-card {
+      background: rgba(30, 41, 59, 0.8);
+      backdrop-filter: blur(12px);
+      padding: 32px 24px;
+      border-radius: 16px;
+      border: 2px solid rgba(34, 211, 238, 0.2);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .earning-card:hover {
+      border-color: rgba(34, 211, 238, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(34, 211, 238, 0.2);
+    }
+
+    .earning-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+
+    .earning-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #67e8f9;
+      margin-bottom: 12px;
+    }
+
+    .earning-desc {
+      font-size: 16px;
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .earning-action {
+      margin-top: auto;
+    }
+
+    .earning-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #22d3ee, #2563eb);
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 9999px;
+      font-weight: bold;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .earning-cta:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 6px 24px rgba(34, 211, 238, 0.4);
+    }
+
+    .earnings-cta {
+      text-align: center;
+      margin-top: 48px;
+      padding: 32px;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(12px);
+      border-radius: 16px;
+      border: 2px solid rgba(34, 211, 238, 0.2);
+    }
+
+    .earnings-subtitle {
+      font-size: 18px;
       color: #cbd5e1;
       margin-bottom: 24px;
       line-height: 1.6;
     }
 
-    .app-buttons {
+    /* How to Play Section */
+    .how-to-play-section {
+      width: 100%;
+      background: rgba(30, 41, 59, 0.6);
+      backdrop-filter: blur(12px);
+      padding: 48px 16px;
+      border-top: 2px solid rgba(34, 211, 238, 0.2);
+    }
+
+    .play-container {
+      max-width: 896px;
+      margin: 0 auto;
+    }
+
+    .play-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .step-card {
       display: flex;
       gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
+      background: rgba(30, 41, 59, 0.8);
+      backdrop-filter: blur(12px);
+      padding: 24px;
+      border-radius: 12px;
+      border: 2px solid rgba(34, 211, 238, 0.2);
+      transition: all 0.3s ease;
     }
 
-    .primary-btn {
-      background: linear-gradient(135deg, var(--primary-cyan), var(--secondary-purple));
-      color: white;
-      padding: 12px 32px;
-      border-radius: 25px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 16px;
-      transition: all 0.3s;
-      box-shadow: 0 4px 12px rgba(34, 211, 238, 0.4);
-      border: none;
-      cursor: pointer;
-    }
-
-    .primary-btn:hover {
+    .step-card:hover {
+      border-color: rgba(34, 211, 238, 0.4);
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(34, 211, 238, 0.5);
     }
 
-    .secondary-btn {
-      background: rgba(15, 23, 42, 0.8);
-      color: var(--primary-cyan);
-      padding: 12px 32px;
-      border-radius: 25px;
-      border: 2px solid var(--primary-cyan);
-      font-weight: bold;
-      font-size: 16px;
-      cursor: pointer;
-      transition: all 0.3s;
-    }
-
-    .secondary-btn:hover {
-      background: var(--primary-cyan);
-      color: #0f172a;
-    }
-    /* Floating App Button */
-    .floating-app-btn {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 1000;
-    }
-
-    .floating-app-btn a {
-      display: block;
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, var(--primary-cyan), var(--secondary-purple));
+    .step-number {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, #22d3ee, #2563eb);
+      color: white;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-decoration: none;
-      color: white;
+      font-size: 24px;
       font-weight: bold;
-      font-size: 14px;
-      box-shadow: 0 4px 16px rgba(34, 211, 238, 0.4);
-      transition: all 0.3s;
+      flex-shrink: 0;
     }
 
-    .floating-app-btn a:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 20px rgba(34, 211, 238, 0.5);
+    .step-content {
+      flex: 1;
     }
 
-    .pulse-animation {
-      animation: pulse-ring 2s infinite;
-    }
-
-    @keyframes pulse-ring {
-      0% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.1);
-      }
-      100% {
-        transform: scale(1);
-      }
-    }
-
-    /* User Stats Preview */
-    .user-preview-section {
-      width: 100%;
-      max-width: 800px;
-      margin: 32px 0;
-      background: rgba(30, 41, 59, 0.6);
-      backdrop-filter: blur(12px);
-      padding: 24px;
-      border-radius: 16px;
-      border: 1px solid rgba(34, 211, 238, 0.2);
-    }
-
-    .user-stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-
-    .stat-card {
-      background: rgba(15, 23, 42, 0.8);
-      padding: 16px;
-      border-radius: 12px;
-      text-align: center;
-      border: 1px solid rgba(34, 211, 238, 0.2);
-    }
-
-    .stat-card h4 {
-      font-size: 14px;
-      color: #94a3b8;
+    .step-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #67e8f9;
       margin-bottom: 8px;
     }
 
-    .stat-number {
+    .step-desc {
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    .game-rules {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(12px);
+      padding: 32px;
+      border-radius: 16px;
+      border: 2px solid rgba(34, 211, 238, 0.2);
+      margin-bottom: 32px;
+    }
+
+    .rules-title {
       font-size: 24px;
-      font-weight: 900;
-      color: var(--primary-cyan);
-    }
-
-    .connect-wallet-btn {
-      width: 100%;
-      background: linear-gradient(135deg, var(--accent-amber), var(--warning-orange));
-      color: #0f172a;
-      padding: 12px 24px;
-      border-radius: 12px;
-      border: none;
       font-weight: bold;
-      font-size: 16px;
-      cursor: pointer;
-      transition: all 0.3s;
+      color: #22d3ee;
+      text-align: center;
+      margin-bottom: 24px;
     }
 
-    .connect-wallet-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(251, 191, 36, 0.4);
+    .rules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
     }
 
-    /* Activity Feed */
-    .activity-feed {
+    .rule-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .rule-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .rule-text {
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    .play-cta {
+      text-align: center;
+    }
+
+    /* App Features Section */
+    .app-features-section {
       width: 100%;
-      max-width: 600px;
-      margin: 24px 0;
       background: rgba(30, 41, 59, 0.4);
       backdrop-filter: blur(12px);
-      padding: 24px;
-      border-radius: 16px;
+      padding: 48px 16px;
+      border-top: 2px solid rgba(34, 211, 238, 0.2);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 32px;
+      max-width: 1200px;
+      margin: 0 auto 64px;
+    }
+
+    .feature-card {
+      background: rgba(30, 41, 59, 0.8);
+      backdrop-filter: blur(12px);
+      padding: 32px;
+      border-radius: 20px;
+      border: 2px solid rgba(34, 211, 238, 0.2);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #22d3ee, #2563eb, #7c3aed);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .feature-card:hover {
+      border-color: rgba(34, 211, 238, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(34, 211, 238, 0.2);
+    }
+
+    .feature-icon {
+      margin-bottom: 24px;
+    }
+
+    .icon-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .feature-emoji {
+      font-size: 48px;
+      display: block;
+      position: relative;
+      z-index: 2;
+    }
+
+    .icon-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, rgba(34, 211, 238, 0.3) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: glow-pulse 2s infinite;
+    }
+
+    @keyframes glow-pulse {
+      0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.5;
+      }
+      50% {
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.8;
+      }
+    }
+
+    .feature-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #67e8f9;
+      margin-bottom: 16px;
+    }
+
+    .feature-desc {
+      font-size: 16px;
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .feature-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(34, 211, 238, 0.1);
+      padding: 8px 12px;
+      border-radius: 9999px;
       border: 1px solid rgba(34, 211, 238, 0.2);
     }
 
-    .activity-feed h3 {
-      font-size: 20px;
-      font-weight: bold;
-      color: var(--primary-cyan);
-      margin-bottom: 16px;
-      text-align: center;
-    }
-
-    .feed-list {
-      max-height: 200px;
-      overflow-y: auto;
-    }
-
-    .feed-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 8px 0;
-      border-bottom: 1px solid rgba(34, 211, 238, 0.1);
+    .highlight-icon {
       font-size: 14px;
     }
 
-    .feed-item:last-child {
-      border-bottom: none;
-    }
-
-    .feed-item .user {
-      color: var(--accent-amber);
-      font-weight: bold;
-    }
-
-    .feed-item .action {
-      color: #cbd5e1;
-      flex: 1;
-      margin: 0 8px;
-    }
-
-    .feed-item .time {
-      color: #94a3b8;
+    .highlight-text {
       font-size: 12px;
-    }
-    /* Price Section */
-    .price-section {
-      width: 100%;
-      max-width: 400px;
-      margin: 24px 0;
+      color: #67e8f9;
+      font-weight: 600;
     }
 
-    .price-card {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(34, 211, 238, 0.1));
+    .feature-action {
+      margin-top: auto;
+    }
+
+    .feature-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #22d3ee, #2563eb);
+      color: white;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 9999px;
+      font-weight: bold;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    .feature-cta:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 8px 32px rgba(34, 211, 238, 0.4);
+    }
+
+    /* About Section */
+    .about-section {
+      width: 100%;
+      background: rgba(30, 41, 59, 0.6);
+      backdrop-filter: blur(12px);
+      padding: 48px 16px;
+      border-top: 2px solid rgba(34, 211, 238, 0.2);
+    }
+
+    .about-container {
+      max-width: 896px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 900;
+      color: #22d3ee;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .cards-container {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .card {
+      background: rgba(30, 41, 59, 0.8);
       backdrop-filter: blur(12px);
       padding: 24px;
-      border-radius: 16px;
-      border: 2px solid rgba(16, 185, 129, 0.3);
-      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(34, 211, 238, 0.1);
+      border: 2px solid rgba(34, 211, 238, 0.2);
+      transition: border-color 0.3s;
     }
 
-    .price-card h4 {
-      font-size: 18px;
+    .card:hover {
+      border-color: rgba(34, 211, 238, 0.4);
+    }
+
+    .card-title {
+      font-size: 20px;
       font-weight: bold;
-      color: var(--success-green);
-      margin-bottom: 16px;
+      color: #67e8f9;
+      margin-bottom: 12px;
     }
 
-    .price-info {
-      display: flex;
-      justify-content: center;
-      align-items: baseline;
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 12px;
       margin-bottom: 16px;
     }
 
-    .price {
-      font-size: 32px;
-      font-weight: 900;
-      color: var(--success-green);
+    .image-single {
+      margin-bottom: 16px;
     }
 
-    .change {
-      font-size: 16px;
-      font-weight: bold;
+    .image-container {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 2px solid rgba(34, 211, 238, 0.3);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 
-    .change.positive {
-      color: var(--success-green);
+    .image-container-wide {
+      aspect-ratio: 16 / 9;
     }
 
-    .change.negative {
-      color: var(--error-red);
+    .card-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
     }
 
-    .market-data {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 20px;
+    .image-container:hover .card-image {
+      transform: scale(1.1);
+    }
+
+    .card-text {
       font-size: 14px;
-      color: #94a3b8;
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-bottom: 12px;
     }
 
-    .trade-btn {
-      background: linear-gradient(135deg, var(--success-green), var(--primary-cyan));
-      color: white;
-      padding: 12px 24px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: bold;
-      display: inline-block;
+    .card-text:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Showcase Section */
+    .showcase-section {
+      width: 100%;
+      background: rgba(30, 41, 59, 0.4);
+      backdrop-filter: blur(12px);
+      padding: 32px 16px;
+      border-top: 2px solid rgba(34, 211, 238, 0.2);
+    }
+
+    .showcase-container {
+      max-width: 1152px;
+      margin: 0 auto;
+    }
+
+    .showcase-title {
+      font-size: 24px;
+      font-weight: 900;
+      color: #22d3ee;
+      text-align: center;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .showcase-item {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 2px solid rgba(34, 211, 238, 0.3);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
       transition: all 0.3s;
     }
 
-    .trade-btn:hover {
+    .showcase-item:hover {
+      border-color: rgba(34, 211, 238, 0.6);
+      box-shadow: 0 4px 6px rgba(34, 211, 238, 0.3);
+      transform: scale(1.05);
+    }
+
+    .showcase-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s;
+    }
+
+    .showcase-item:hover .showcase-image {
+      transform: scale(1.1);
+    }
+
+    .showcase-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.8), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .showcase-item:hover .showcase-overlay {
+      opacity: 1;
+    }
+    
+    /* Charity Section */
+    .charity-section {
+      width: 100%;
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.15), rgba(168, 85, 247, 0.15));
+      backdrop-filter: blur(12px);
+      padding: 48px 16px;
+      border-top: 2px solid rgba(236, 72, 153, 0.3);
+    }
+
+    .charity-container {
+      max-width: 896px;
+      margin: 0 auto;
+    }
+
+    .charity-title {
+      font-size: 32px;
+      font-weight: 900;
+      color: #f472b6;
+      text-align: center;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .charity-subtitle {
+      font-size: 18px;
+      color: #fbbf24;
+      text-align: center;
+      margin-bottom: 32px;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    .charity-description {
+      font-size: 16px;
+      color: #e9d5ff;
+      text-align: center;
+      margin-bottom: 32px;
+      line-height: 1.8;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .donation-addresses {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .address-item {
+      background: rgba(30, 41, 59, 0.8);
+      backdrop-filter: blur(12px);
+      padding: 20px;
+      border-radius: 12px;
+      border: 2px solid rgba(236, 72, 153, 0.3);
+      box-shadow: 0 4px 6px rgba(236, 72, 153, 0.2);
+      transition: all 0.3s;
+    }
+
+    .address-item:hover {
+      border-color: rgba(236, 72, 153, 0.6);
+      box-shadow: 0 6px 8px rgba(236, 72, 153, 0.4);
       transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+    }
+
+    .address-label {
+      font-size: 16px;
+      font-weight: bold;
+      color: #f472b6;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .address-value {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(236, 72, 153, 0.2);
+    }
+
+    .address-text {
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      color: #fbbf24;
+      font-weight: 600;
+      word-break: break-all;
+      flex: 1;
+    }
+
+    .charity-copy-btn {
+      background: linear-gradient(135deg, #ec4899, #a855f7);
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: white;
+      font-weight: bold;
+      font-size: 12px;
+    }
+
+    .charity-copy-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(236, 72, 153, 0.4);
+    }
+
+    .heart-icon {
+      width: 28px;
+      height: 28px;
+      color: #f472b6;
+    }
+
+    /* Footer */
+    footer {
+      width: 100%;
+      background: linear-gradient(to right, #1e293b, #1e3a8a);
+      color: white;
+      padding: 24px 16px;
+      text-align: center;
+      border-top: 1px solid rgba(34, 211, 238, 0.2);
+    }
+
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 12px;
+    }
+
+    .footer-text {
+      font-size: 14px;
+      color: #cbd5e1;
+    }
+
+    .footer-tagline {
+      font-size: 12px;
+      color: rgba(34, 211, 238, 0.8);
+      margin-top: 8px;
     }
 
     /* Toast */
@@ -693,34 +1309,121 @@
 
     /* Responsive */
     @media (min-width: 640px) {
+      .logo { height: 40px; width: 40px; }
+      .contract-code { font-size: 12px; max-width: none; }
       .main-image { width: 288px; height: 288px; }
       .click-counter { width: 64px; height: 64px; font-size: 24px; }
-      .dashboard-value { font-size: 28px; }
+      .total-number { font-size: 80px; }
+      .badge { padding: 12px 24px; }
+      .badge-text { font-size: 14px; }
+      .about-link { font-size: 18px; }
+      .section-title { font-size: 48px; }
+      .card { padding: 24px; }
+      .card-title { font-size: 24px; }
+      .card-text { font-size: 16px; }
+      .showcase-title { font-size: 32px; }
+      .footer-text { font-size: 14px; }
+      .footer-tagline { font-size: 12px; }
+      
+      /* New responsive styles */
+      .hero-title { font-size: 56px; }
+      .hero-subtitle { font-size: 22px; }
+      .hero-cta-group { margin-top: 32px; }
+      .primary-cta-row { flex-direction: row; gap: 20px; }
+      .hero-section { padding: 64px 24px; }
+      .earning-card { padding: 40px 32px; }
+      .step-card { padding: 32px; }
+      .play-steps { grid-template-columns: repeat(2, 1fr); }
+      .earnings-grid { grid-template-columns: repeat(3, 1fr); }
+      
+      /* App features responsive */
+      .features-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+      .feature-card { padding: 24px; }
+      .feature-emoji { font-size: 40px; }
     }
 
     @media (min-width: 768px) {
       .main-image { width: 320px; height: 320px; }
-      .app-cta-card { padding: 40px 32px; }
-      .app-cta-card h3 { font-size: 28px; }
+      .total-number { font-size: 96px; }
+      
+      /* New responsive styles */
+      .hero-title { font-size: 64px; }
+      .hero-subtitle { font-size: 24px; }
+      .play-steps { grid-template-columns: repeat(4, 1fr); }
+      .rules-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (min-width: 1024px) {
-      .dashboard-grid { grid-template-columns: repeat(4, 1fr); }
-      .user-stats-grid { grid-template-columns: repeat(3, 1fr); }
+      .total-number { font-size: 112px; }
+      
+      /* New responsive styles */
+      .hero-title { font-size: 72px; }
+      .hero-subtitle { font-size: 26px; }
+      .hero-section { padding: 80px 32px; }
+    }
+
+    /* Mobile-specific styles */
+    @media (max-width: 639px) {
+      .hero-title { font-size: 32px; }
+      .hero-subtitle { font-size: 16px; }
+      .hero-cta-group { margin-top: 24px; }
+      .hero-section { padding: 32px 16px; }
+      
+      .upgrade-notice {
+        flex-direction: column;
+        gap: 8px;
+        padding: 10px 16px;
+        font-size: 13px;
+      }
+      
+      .staking-info {
+        flex-direction: column;
+        gap: 12px;
+        padding: 12px 16px;
+      }
+      
+      .staking-arrow {
+        transform: rotate(90deg);
+      }
+      
+      .staking-step {
+        font-size: 13px;
+      }
+      
+      .upgrade-details-section {
+        padding: 32px 16px;
+      }
+      
+      .upgrade-details-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      
+      .detail-card {
+        padding: 20px;
+      }
+      
+      .detail-icon {
+        font-size: 32px;
+      }
+      
+      .detail-title {
+        font-size: 18px;
+      }
+      
+      /* App features mobile responsive */
+      .features-grid { grid-template-columns: 1fr; gap: 20px; }
+      .feature-card { padding: 20px; }
+      .feature-emoji { font-size: 36px; }
+      .feature-title { font-size: 20px; }
+      .feature-desc { font-size: 14px; }
+      .feature-highlights { gap: 8px; }
+      .highlight-item { padding: 6px 10px; }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Activity Banner -->
-    <div class="activity-banner">
-      <div class="activity-content">
-        <span class="activity-title">🎉 限时双倍点击活动</span>
-        <span class="activity-desc">每次点击获得2倍积分</span>
-        <span class="countdown" id="countdown">剩余: 02:34:56</span>
-      </div>
-    </div>
-
     <!-- Header -->
     <header>
       <div class="header-top">
@@ -728,11 +1431,8 @@
           <img src="./assets/logo.jpg" alt="Popcow Logo" class="logo">
         </div>
         <div class="header-actions">
-          <a href="https://app.popcow.xyz" class="app-link">
-            <span>🚀 App</span>
-          </a>
           <button class="lang-btn" onclick="toggleLanguage()">
-            <span id="langText">中文</span>
+            <span id="langText">EN</span>
           </button>
           <a href="https://x.com/popcowxyz" target="_blank" rel="noopener noreferrer" class="social-link">
             <svg class="social-icon" fill="currentColor" viewBox="0 0 24 24">
@@ -746,175 +1446,398 @@
           </a>
         </div>
       </div>
-    </header>
-    <!-- Data Dashboard -->
-    <div class="data-dashboard">
-      <div class="dashboard-grid">
-        <div class="dashboard-card">
-          <div class="dashboard-label">全球点击数</div>
-          <div class="dashboard-value" id="globalClicks">337,742,378</div>
-          <div class="dashboard-change positive">+1,234/分钟</div>
-        </div>
-        <div class="dashboard-card">
-          <div class="dashboard-label">在线用户</div>
-          <div class="dashboard-value" id="onlineUsers">2,456</div>
-          <div class="dashboard-change positive">+23</div>
-        </div>
-        <div class="dashboard-card">
-          <div class="dashboard-label">今日新增</div>
-          <div class="dashboard-value" id="dailyNew">8,923</div>
-          <div class="dashboard-change positive">+15.2%</div>
-        </div>
-        <div class="dashboard-card">
-          <div class="dashboard-label">持币地址</div>
-          <div class="dashboard-value" id="holders">15,678</div>
-          <div class="dashboard-change positive">+45</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Leaderboard Section -->
-    <div class="leaderboard-section">
-      <div class="leaderboard-container">
-        <h2 class="leaderboard-title">🏆 排行榜</h2>
-        <div class="leaderboard-tabs">
-          <button class="tab-btn active" onclick="switchTab('clicks')">点击榜</button>
-          <button class="tab-btn" onclick="switchTab('streak')">连击榜</button>
-          <button class="tab-btn" onclick="switchTab('community')">社区榜</button>
-        </div>
-        <div class="leaderboard-list" id="leaderboard">
-          <div class="leaderboard-item">
-            <div class="rank">1</div>
-            <div class="user-info">
-              <div class="user-avatar">🐄</div>
-              <div class="user-name">CowKing***</div>
-            </div>
-            <div class="user-score">125,678</div>
-          </div>
-          <div class="leaderboard-item">
-            <div class="rank">2</div>
-            <div class="user-info">
-              <div class="user-avatar">🚀</div>
-              <div class="user-name">MoonFarmer***</div>
-            </div>
-            <div class="user-score">98,432</div>
-          </div>
-          <div class="leaderboard-item">
-            <div class="rank">3</div>
-            <div class="user-info">
-              <div class="user-avatar">💎</div>
-              <div class="user-name">DiamondHands***</div>
-            </div>
-            <div class="user-score">87,654</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Main Content -->
-    <main>
-      <div class="click-area">
-        <div class="main-image-wrapper" onmousedown="startClick()" onmouseup="endClick()" onmouseleave="cancelClick()" ontouchstart="startClick()" ontouchend="endClick()">
-          <img id="mainImage" src="./assets/mouth-closed.jpg" alt="Popcow" class="main-image">
-          <div class="click-counter">
-            <span id="clickCount">0</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- App Entrance Section -->
-      <div class="app-entrance-section">
-        <div class="app-cta-card">
-          <h3>🚀 体验完整版 Popcow App</h3>
-          <p>解锁更多功能：交易、质押、NFT、游戏</p>
-          <div class="app-buttons">
-            <a href="https://app.popcow.xyz" class="primary-btn">
-              立即进入 App
-            </a>
-            <button class="secondary-btn" onclick="showAppPreview()">
-              功能预览
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- User Stats Preview -->
-      <div class="user-preview-section">
-        <div class="user-stats-grid">
-          <div class="stat-card">
-            <h4>我的点击</h4>
-            <span class="stat-number" id="userClicks">0</span>
-          </div>
-          <div class="stat-card">
-            <h4>我的积分</h4>
-            <span class="stat-number" id="userPoints">0</span>
-          </div>
-          <div class="stat-card">
-            <h4>我的排名</h4>
-            <span class="stat-number" id="userRank">-</span>
-          </div>
-        </div>
-        <button class="connect-wallet-btn" onclick="connectWallet()">
-          连接钱包查看完整数据
+      <div class="contract-address">
+        <code class="contract-code">8mrMRf8QwGh5bSrgzKsMmHPTTGqDcENU91SWuXEypump</code>
+        <button class="copy-btn" onclick="copyAddress('contract')">
+          <svg width="16" height="16" fill="none" stroke="#22d3ee" stroke-width="2" viewBox="0 0 24 24">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
         </button>
       </div>
+    </header>
 
-      <!-- Price Section -->
-      <div class="price-section">
-        <div class="price-card">
-          <h4>$POPCOW 实时价格</h4>
-          <div class="price-info">
-            <span class="price" id="tokenPrice">$0.0234</span>
-            <span class="change positive" id="priceChange">+12.34%</span>
+    <!-- Main Content -->
+    <main>
+      <!-- Preload click image -->
+      <img src="./assets/mouth-open-click.jpg" style="display:none;">
+      
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            <span data-zh="Popcow Defi - 质押升级，点击挖矿" data-en="Popcow Defi - Stake to Upgrade, Click to Mine">Popcow Defi - Stake to Upgrade, Click to Mine</span>
+          </h1>
+          <p class="hero-subtitle">
+            <span data-zh="质押您的 $POPCOW 代币，兑换 Popcow Defi 应用代币，开启全新点击挖矿体验！" data-en="Stake your $POPCOW tokens, exchange for Popcow Defi app tokens, start a new click-to-mine experience!">Stake your $POPCOW tokens, exchange for Popcow Defi app tokens, start a new click-to-mine experience!</span>
+          </p>
+          
+          <!-- Upgrade notice and entry button -->
+          <div class="hero-cta-group">
+            <div class="upgrade-notice">
+              <span class="upgrade-badge">UPGRADE</span>
+              <span data-zh="Popcow 升级为 Popcow Defi！质押老代币即可兑换新应用代币" data-en="Popcow upgrades to Popcow Defi! Stake old tokens to exchange for new app tokens">Popcow upgrades to Popcow Defi! Stake old tokens to exchange for new app tokens</span>
+            </div>
+            <div class="staking-info">
+              <div class="staking-step">
+                <span class="step-icon">1️⃣</span>
+                <span data-zh="质押您的 $POPCOW 代币" data-en="Stake your $POPCOW tokens">Stake your $POPCOW tokens</span>
+              </div>
+              <div class="staking-arrow">→</div>
+              <div class="staking-step">
+                <span class="step-icon">2️⃣</span>
+                <span data-zh="获得 Popcow Defi 应用代币" data-en="Receive Popcow Defi app tokens">Receive Popcow Defi app tokens</span>
+              </div>
+            </div>
+            <a href="https://app.popcow.xyz/" target="_blank" rel="noopener noreferrer" class="primary-cta">
+              <span data-zh="进入 Popcow Defi" data-en="Enter Popcow Defi">Enter Popcow Defi</span>
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </a>
           </div>
-          <div class="market-data">
-            <span>市值: <span id="marketCap">$2.3M</span></span>
-            <span>24h交易量: <span id="volume24h">$456K</span></span>
-          </div>
-          <a href="https://app.popcow.xyz/trade" class="trade-btn">
-            立即交易
-          </a>
+
         </div>
-      </div>
-      <!-- Activity Feed -->
-      <div class="activity-feed">
-        <h3>🔥 实时动态</h3>
-        <div class="feed-list" id="activityFeed">
-          <div class="feed-item">
-            <span class="user">用户 0x1a2b...</span>
-            <span class="action">刚刚点击了 100 次</span>
-            <span class="time">2秒前</span>
+      </section>
+
+      <!-- Popcow Defi Upgrade Details -->
+      <section class="upgrade-details-section">
+        <h2 class="section-title">
+          <span>🪙</span>
+          <span data-zh="Popcow Defi 升级详情" data-en="Popcow Defi Upgrade Details">Popcow Defi Upgrade Details</span>
+          <span>🪙</span>
+        </h2>
+        
+        <div class="upgrade-details-grid">
+          <!-- Staking Mechanism -->
+          <div class="detail-card">
+            <div class="detail-icon">🔒</div>
+            <h3 class="detail-title" data-zh="质押机制" data-en="Staking Mechanism">Staking Mechanism</h3>
+            <p class="detail-desc" data-zh="将您持有的 $POPCOW 代币质押到智能合约，即可按比例获得 Popcow Defi 应用代币。质押过程安全透明，链上可查。" data-en="Stake your $POPCOW tokens to the smart contract to receive Popcow Defi app tokens proportionally. The staking process is secure, transparent, and verifiable on-chain.">Stake your $POPCOW tokens to the smart contract to receive Popcow Defi app tokens proportionally. The staking process is secure, transparent, and verifiable on-chain.</p>
+            <div class="detail-info">
+              <span class="info-tag">Contract Address</span>
+              <code class="info-code">8mrMRf...pump</code>
+            </div>
           </div>
-          <div class="feed-item">
-            <span class="user">用户 0x3c4d...</span>
-            <span class="action">获得了连击成就</span>
-            <span class="time">15秒前</span>
+
+          <!-- Popcow Defi Usage -->
+          <div class="detail-card">
+            <div class="detail-icon">✨</div>
+            <h3 class="detail-title" data-zh="Popcow Defi 用途" data-en="Popcow Defi Usage">Popcow Defi Usage</h3>
+            <p class="detail-desc" data-zh="Popcow Defi 是应用内的核心代币，用于点击挖矿奖励、排行榜奖励、邀请返佣等。持有越多，收益越高！" data-en="Popcow Defi is the core token in the app, used for click mining rewards, leaderboard rewards, referral commissions, etc. The more you hold, the higher your earnings!">Popcow Defi is the core token in the app, used for click mining rewards, leaderboard rewards, referral commissions, etc. The more you hold, the higher your earnings!</p>
+            <ul class="detail-list">
+              <li data-zh="🎮 点击挖矿奖励" data-en="🎮 Click Mining Rewards">🎮 Click Mining Rewards</li>
+              <li data-zh="🏆 排行榜奖励" data-en="🏆 Leaderboard Rewards">🏆 Leaderboard Rewards</li>
+              <li data-zh="👥 邀请返佣" data-en="👥 Referral Commissions">👥 Referral Commissions</li>
+            </ul>
           </div>
-          <div class="feed-item">
-            <span class="user">用户 0x5e6f...</span>
-            <span class="action">分享到了 Twitter</span>
-            <span class="time">32秒前</span>
-          </div>
-          <div class="feed-item">
-            <span class="user">用户 0x7g8h...</span>
-            <span class="action">连接了钱包</span>
-            <span class="time">1分钟前</span>
+
+          <!-- Upgrade Benefits -->
+          <div class="detail-card">
+            <div class="detail-icon">🚀</div>
+            <h3 class="detail-title" data-zh="升级优势" data-en="Upgrade Benefits">Upgrade Benefits</h3>
+            <p class="detail-desc" data-zh="Popcow Defi 全新升级，性能更强、体验更流畅、收益更丰厚。老用户优先享受升级福利！" data-en="Popcow Defi is a brand new upgrade with better performance, smoother experience, and more generous rewards. Old users enjoy priority upgrade benefits!">Popcow Defi is a brand new upgrade with better performance, smoother experience, and more generous rewards. Old users enjoy priority upgrade benefits!</p>
+            <ul class="detail-list">
+              <li data-zh="⚡ 更快的交易速度" data-en="⚡ Faster Transaction Speed">⚡ Faster Transaction Speed</li>
+              <li data-zh="💰 更高的挖矿收益" data-en="💰 Higher Mining Rewards">💰 Higher Mining Rewards</li>
+              <li data-zh="🎁 老用户专属福利" data-en="🎁 Exclusive Benefits for Old Users">🎁 Exclusive Benefits for Old Users</li>
+            </ul>
           </div>
         </div>
-      </div>
+      </section>
+
+      <!-- App Features -->
+      <section id="app-features" class="app-features-section">
+        <h2 class="section-title">
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="color: #fbbf24;">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          <span data-zh="应用核心功能" data-en="Core App Features">Core App Features</span>
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="color: #fbbf24;">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        </h2>
+        
+        <div class="features-grid">
+          <!-- Click Mining -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <div class="icon-wrapper">
+                <span class="feature-emoji">🖱️</span>
+                <div class="icon-glow"></div>
+              </div>
+            </div>
+            <h3 class="feature-title">
+              <span data-zh="点击挖矿" data-en="Click Mining">Click Mining</span>
+            </h3>
+            <p class="feature-desc">
+              <span data-zh="简单点击即可获得$POPCOW代币奖励，支持连击加成，让每一次点击都有价值！" data-en="Simple clicking to earn $POPCOW token rewards, supports combo multipliers, making every click valuable!">Simple clicking to earn $POPCOW token rewards, supports combo multipliers, making every click valuable!</span>
+            </p>
+            <div class="feature-highlights">
+              <div class="highlight-item">
+                <span class="highlight-icon">⚡</span>
+                <span class="highlight-text">Combo x5</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">💎</span>
+                <span class="highlight-text">Instant</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">🎯</span>
+                <span class="highlight-text">Daily Tasks</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 钱包管理功能 -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <div class="icon-wrapper">
+                <span class="feature-emoji">👛</span>
+                <div class="icon-glow"></div>
+              </div>
+            </div>
+            <h3 class="feature-title">
+              <span data-zh="钱包管理" data-en="Wallet Management">Wallet Management</span>
+            </h3>
+            <p class="feature-desc">
+              <span data-zh="支持主流Web3钱包，安全便捷，一键连接，轻松管理你的数字资产！" data-en="Supports mainstream Web3 wallets, secure and convenient, one-click connection, easily manage your digital assets!">Supports mainstream Web3 wallets, secure and convenient, one-click connection, easily manage your digital assets!</span>
+            </p>
+            <div class="feature-highlights">
+              <div class="highlight-item">
+                <span class="highlight-icon">🔐</span>
+                <span class="highlight-text">Secure</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">�</span>
+                <span class="highlight-text">Multi-chain</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">📊</span>
+                <span class="highlight-text">Balance</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 排行榜功能 -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <div class="icon-wrapper">
+                <span class="feature-emoji">🏆</span>
+                <div class="icon-glow"></div>
+              </div>
+            </div>
+            <h3 class="feature-title">
+              <span data-zh="全球排行榜" data-en="Global Leaderboard">Global Leaderboard</span>
+            </h3>
+            <p class="feature-desc">
+              <span data-zh="实时Global Rank，展示顶级玩家，竞争丰厚奖励，成为点击挖矿冠军！" data-en="Real-time global rankings, showcase top players, compete for generous rewards, become the click mining champion!">Real-time global rankings, showcase top players, compete for generous rewards, become the click mining champion!</span>
+            </p>
+            <div class="feature-highlights">
+              <div class="highlight-item">
+                <span class="highlight-icon">🌍</span>
+                <span class="highlight-text">Global Rank</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">🎁</span>
+                <span class="highlight-text">Special Rewards</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">📈</span>
+                <span class="highlight-text">History</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 邀请系统功能 -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <div class="icon-wrapper">
+                <span class="feature-emoji">👥</span>
+                <div class="icon-glow"></div>
+              </div>
+            </div>
+            <h3 class="feature-title">
+              <span data-zh="邀请系统" data-en="Referral System">Referral System</span>
+            </h3>
+            <p class="feature-desc">
+              <span data-zh="邀请好友获得10%收益分成，建立你的挖矿团队，享受持续被动收入！" data-en="Invite friends to get 10% revenue sharing, build your mining team, enjoy continuous passive income!">Invite friends to get 10% revenue sharing, build your mining team, enjoy continuous passive income!</span>
+            </p>
+            <div class="feature-highlights">
+              <div class="highlight-item">
+                <span class="highlight-icon">💰</span>
+                <span class="highlight-text">10% Share</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">📊</span>
+                <span class="highlight-text">Team Stats</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">🎯</span>
+                <span class="highlight-text">Unlimited</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 代币兑换功能 -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <div class="icon-wrapper">
+                <span class="feature-emoji">💱</span>
+                <div class="icon-glow"></div>
+              </div>
+            </div>
+            <h3 class="feature-title">
+              <span data-zh="代币兑换" data-en="Token Exchange">Token Exchange</span>
+            </h3>
+            <p class="feature-desc">
+              <span data-zh="灵活兑换$POPCOW代币，支持多种交易对，实时汇率，低手续费！" data-en="Flexible exchange of $POPCOW tokens, supports multiple trading pairs, real-time rates, low fees!">Flexible exchange of $POPCOW tokens, supports multiple trading pairs, real-time rates, low fees!</span>
+            </p>
+            <div class="feature-highlights">
+              <div class="highlight-item">
+                <span class="highlight-icon">⚡</span>
+                <span class="highlight-text">Instant Exchange</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">💎</span>
+                <span class="highlight-text">Best Rate</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">🔒</span>
+                <span class="highlight-text">Secure</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 数据统计功能 -->
+          <div class="feature-card">
+            <div class="feature-icon">
+              <div class="icon-wrapper">
+                <span class="feature-emoji">📊</span>
+                <div class="icon-glow"></div>
+              </div>
+            </div>
+            <h3 class="feature-title">
+              <span data-zh="数据统计" data-en="Data Analytics">Data Analytics</span>
+            </h3>
+            <p class="feature-desc">
+              <span data-zh="详细的收益统计，点击数据分析，帮助你优化挖矿策略，最大化收益！" data-en="Detailed earnings statistics, click data analysis, help you optimize mining strategy, maximize returns!">Detailed earnings statistics, click data analysis, help you optimize mining strategy, maximize returns!</span>
+            </p>
+            <div class="feature-highlights">
+              <div class="highlight-item">
+                <span class="highlight-icon">📈</span>
+                <span class="highlight-text">Earnings Chart</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">📱</span>
+                <span class="highlight-text">Mobile Support</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">📋</span>
+                <span class="highlight-text">Reports</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
     </main>
 
-    <!-- Floating App Button -->
-    <div class="floating-app-btn">
-      <a href="https://app.popcow.xyz">
-        <div class="pulse-animation">
-          <span>App</span>
+    <!-- Showcase Section -->
+    <section class="showcase-section">
+      <div class="showcase-container">
+        <h2 class="showcase-title">
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="color: #22d3ee;">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          <span data-zh="Showcase" data-en="Showcase">Showcase</span>
+          <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="color: #22d3ee;">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        </h2>
+        <div class="showcase-grid">
+          <div class="showcase-item">
+            <img src="./assets/showcase-5.jpg" alt="Showcase 1" class="showcase-image">
+            <div class="showcase-overlay"></div>
+          </div>
+          <div class="showcase-item">
+            <img src="./assets/showcase-6.jpg" alt="Showcase 2" class="showcase-image">
+            <div class="showcase-overlay"></div>
+          </div>
+          <div class="showcase-item">
+            <img src="./assets/showcase-7.jpg" alt="Showcase 3" class="showcase-image">
+            <div class="showcase-overlay"></div>
+          </div>
         </div>
-      </a>
-    </div>
+      </div>
+    </section>
+    
+    <!-- Charity Section -->
+    <section class="charity-section">
+      <div class="charity-container">
+        <h2 class="charity-title">
+          <svg class="heart-icon" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+          <span data-zh="Charity Drive" data-en="Charity Drive">Charity Drive</span>
+          <svg class="heart-icon" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </h2>
+        
+        <p class="charity-subtitle">
+          <span data-zh="PopcowCharity Drive：助力深陷战火苦难、饱受病痛折磨的孩童，以爱为他们照亮前路。" data-en="Popcow Charity Drive: For children trapped in war suffering and plagued by illness, love lights up their way.">Popcow Charity Drive: For children trapped in war suffering and plagued by illness, love lights up their way.</span>
+        </p>
+
+        <p class="charity-description">
+          <span data-zh="每一份捐赠都将直接用于帮助那些在战争和疾病中挣扎的儿童，为他们提供医疗援助、教育支持和生活必需品。让我们携手共建一个充满希望的未来。" data-en="Every donation will directly help children struggling with war and disease, providing medical aid, educational support, and essential supplies. Let's build a hopeful future together.">Every donation will directly help children struggling with war and disease, providing medical aid, educational support, and essential supplies. Let's build a hopeful future together.</span>
+        </p>
+
+        <div class="donation-addresses">
+          <div class="address-item">
+            <div class="address-label">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/>
+              </svg>
+              <span data-zh="SOL Address" data-en="SOL Address">SOL Address</span>
+            </div>
+            <div class="address-value">
+              <span class="address-text" id="solAddress">AAYciGXbqNLkk6nSggG7JdFEWPwWaPEjv491ZRHQRQt</span>
+              <button class="charity-copy-btn" onclick="copyAddress('sol')">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <span data-zh="Copy" data-en="Copy">Copy</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="address-item">
+            <div class="address-label">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+              <span data-zh="POPCOW Address" data-en="POPCOW Address">POPCOW Address</span>
+            </div>
+            <div class="address-value">
+              <span class="address-text" id="popcowAddress">AAYciGXbqNLkk6nSggG7JdFEWPwWaPEjv491ZRHQRQt</span>
+              <button class="charity-copy-btn" onclick="copyAddress('popcow')">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                <span data-zh="Copy" data-en="Copy">Copy</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Footer -->
-    <footer style="width: 100%; background: linear-gradient(to right, #1e293b, #1e3a8a); color: white; padding: 24px 16px; text-align: center; border-top: 1px solid rgba(34, 211, 238, 0.2);">
-      <div style="display: flex; justify-content: center; align-items: center; gap: 24px; margin-bottom: 12px;">
+    <footer>
+      <div class="footer-social">
         <a href="https://x.com/popcowxyz" target="_blank" rel="noopener noreferrer" class="social-link">
           <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="color: #22d3ee;">
             <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
@@ -926,231 +1849,145 @@
           </svg>
         </a>
       </div>
-      <p style="font-size: 12px; color: rgba(34, 211, 238, 0.8); margin-top: 8px;">
-        社区驱动 · 价值共生
+      <p class="footer-tagline">
+        <span data-zh="Community Driven · Value Symbiosis" data-en="Community Driven · Value Symbiosis">Community Driven · Value Symbiosis</span>
       </p>
     </footer>
   </div>
+
   <script>
-    // 状态变量
-    let currentLang = 'zh';
-    let isClicking = false;
-    let clickCount = 0;
-    let totalClicks = 337742378;
-    let userPoints = 0;
+        // State
+    let currentLang = 'en'; // Current language state
+    let isClicking = false; // Whether clicking
+    let clickCount = 0; // User click count, resets on page refresh
+    let totalClicks = 0; // Total clicks (fetched from Redis)
     let isThrottled = false;
-    let countdownTime = 2 * 3600 + 34 * 60 + 56; // 2:34:56 in seconds
-
-    // 初始化
-    document.addEventListener('DOMContentLoaded', function() {
-      loadData();
-      startCountdown();
-      startRealTimeUpdates();
-      generateActivityFeed();
-    });
-
-    // 加载数据
+    
+    // Contract addresses
+    const contractAddress = '8mrMRf8QwGh5bSrgzKsMmHPTTGqDcENU91SWuXEypump';
+    const solAddress = 'AAYciGXbqNLkk6nSggG7JdFEWPwWaPEjv491ZRHQRQt';
+    const popcowAddress = 'AAYciGXbqNLkk6nSggG7JdFEWPwWaPEjv491ZRHQRQt';
+    
+  <script>
+        // State
+    let currentLang = 'en'; // Current language state
+    let isClicking = false; // Whether clicking
+    let clickCount = 0; // User click count, resets on page refresh
+    let totalClicks = 0; // Total clicks (fetched from Redis)
+    let isThrottled = false;
+    
+    // Contract addresses
+    const contractAddress = '8mrMRf8QwGh5bSrgzKsMmHPTTGqDcENU91SWuXEypump';
+    const solAddress = 'AAYciGXbqNLkk6nSggG7JdFEWPwWaPEjv491ZRHQRQt';
+    const popcowAddress = 'AAYciGXbqNLkk6nSggG7JdFEWPwWaPEjv491ZRHQRQt';
+    
+    // Load data on page load
     async function loadData() {
-      try {
-        // 模拟从API获取数据
-        updateDashboard();
-        updateLeaderboard();
-        updatePrice();
-      } catch (error) {
-        console.error('Error loading data:', error);
-      }
-    }
-
-    // 倒计时功能
-    function startCountdown() {
-      const countdownElement = document.getElementById('countdown');
-      
-      setInterval(() => {
-        if (countdownTime > 0) {
-          countdownTime--;
-          const hours = Math.floor(countdownTime / 3600);
-          const minutes = Math.floor((countdownTime % 3600) / 60);
-          const seconds = countdownTime % 60;
-          
-          countdownElement.textContent = `剩余: ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-        } else {
-          countdownElement.textContent = '活动已结束';
+        try {
+            // Get totalClicks from Redis
+            const response = await fetch('counter-redis.php?action=read');
+            const data = await response.json();
+    
+            if (data.status === 'success') {
+                totalClicks = data.value; // Get initial totalClicks from Redis
+                updateTotalClicks();
+            } else {
+                console.error('Error reading totalClicks from Redis:', data.message || 'Unknown error');
+            }
+    
+            // Reset clickCount
+            clickCount = 0; // Reset to 0 on each refresh
+            document.getElementById('clickCount').textContent = clickCount; // Update HTML
+    
+        } catch (error) {
+            console.error('Error loading totalClicks:', error);
         }
-      }, 1000);
+    
+        // Set initial page content language to English
+        document.querySelectorAll('[data-zh][data-en]').forEach(el => {
+            el.textContent = el.getAttribute('data-en');
+        });
     }
-
-    // 点击功能
+    
+    // Save totalClicks to Redis
+    async function syncTotalClicks() {
+        try {
+            const response = await fetch('counter-redis.php?action=sync', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ totalClicks }), // Send totalClicks to backend
+            });
+    
+            const data = await response.json();
+    
+            if (data.status !== 'success') {
+                console.error('Failed to sync totalClicks with Redis:', data.message || 'Unknown error');
+            }
+        } catch (error) {
+            console.error('Error syncing totalClicks with Redis:', error);
+        }
+    }
+    
+    // Click event logic
     function startClick() {
-      if (isThrottled) return;
-      isClicking = true;
-      document.getElementById('mainImage').src = './assets/mouth-open-click.jpg';
+        if (isThrottled) return; // If throttled, exit
+        isClicking = true;
+        document.getElementById('mainImage').src = './assets/mouth-open-click.jpg';
     }
-
+    
     function endClick() {
-      if (isThrottled) return;
-      
-      isThrottled = true;
-      setTimeout(() => {
-        isThrottled = false;
-      }, 100);
-
-      if (isClicking) {
-        clickCount++;
-        totalClicks++;
-        userPoints += (countdownTime > 0) ? 2 : 1; // 双倍积分活动
-        
-        document.getElementById('clickCount').textContent = clickCount;
-        document.getElementById('globalClicks').textContent = totalClicks.toLocaleString();
-        document.getElementById('userClicks').textContent = clickCount;
-        document.getElementById('userPoints').textContent = userPoints;
-        
-        // 添加到活动流
-        addToActivityFeed(`用户 ${generateRandomAddress()}`, `点击了 ${clickCount} 次`, '刚刚');
-      }
-      cancelClick();
+        if (isThrottled) return; // If in throttle period, return
+    
+        isThrottled = true; // Start throttling
+        setTimeout(() => {
+            isThrottled = false; // End throttling
+        }, 100); // Prevent rapid clicks, limit to once per 100ms
+        if (isClicking) {
+            // Update local count
+            clickCount++; // Click count only stored in memory, not saved
+            totalClicks++; // Total clicks saved by Redis
+            document.getElementById('clickCount').textContent = clickCount;
+            updateTotalClicks();
+    
+            // Sync to Redis
+            syncTotalClicks();
+        }
+        cancelClick();
     }
-
+    
     function cancelClick() {
-      isClicking = false;
-      document.getElementById('mainImage').src = './assets/mouth-closed.jpg';
+        isClicking = false;
+        document.getElementById('mainImage').src = './assets/mouth-closed.jpg';
     }
-    // 更新仪表板
-    function updateDashboard() {
-      const onlineUsers = 2456 + Math.floor(Math.random() * 100);
-      const dailyNew = 8923 + Math.floor(Math.random() * 50);
-      const holders = 15678 + Math.floor(Math.random() * 20);
-      
-      document.getElementById('onlineUsers').textContent = onlineUsers.toLocaleString();
-      document.getElementById('dailyNew').textContent = dailyNew.toLocaleString();
-      document.getElementById('holders').textContent = holders.toLocaleString();
+    
+    // Update total clicks on page
+    function updateTotalClicks() {
+        document.getElementById('totalClicks').textContent = totalClicks.toLocaleString();
     }
-
-    // 切换排行榜标签
-    function switchTab(tabType) {
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      event.target.classList.add('active');
-      
-      // 这里可以加载不同类型的排行榜数据
-      updateLeaderboard(tabType);
-    }
-
-    // 更新排行榜
-    function updateLeaderboard(type = 'clicks') {
-      const leaderboard = document.getElementById('leaderboard');
-      // 模拟排行榜数据
-      const mockData = [
-        { rank: 1, name: 'CowKing***', score: 125678, avatar: '🐄' },
-        { rank: 2, name: 'MoonFarmer***', score: 98432, avatar: '🚀' },
-        { rank: 3, name: 'DiamondHands***', score: 87654, avatar: '💎' },
-        { rank: 4, name: 'CryptoMaster***', score: 76543, avatar: '⚡' },
-        { rank: 5, name: 'PopcowFan***', score: 65432, avatar: '🌟' }
-      ];
-      
-      leaderboard.innerHTML = mockData.map(user => `
-        <div class="leaderboard-item">
-          <div class="rank">${user.rank}</div>
-          <div class="user-info">
-            <div class="user-avatar">${user.avatar}</div>
-            <div class="user-name">${user.name}</div>
-          </div>
-          <div class="user-score">${user.score.toLocaleString()}</div>
-        </div>
-      `).join('');
-    }
-
-    // 更新价格信息
-    function updatePrice() {
-      const basePrice = 0.0234;
-      const change = (Math.random() - 0.5) * 0.002;
-      const newPrice = basePrice + change;
-      const changePercent = (change / basePrice * 100).toFixed(2);
-      
-      document.getElementById('tokenPrice').textContent = `$${newPrice.toFixed(4)}`;
-      const changeElement = document.getElementById('priceChange');
-      changeElement.textContent = `${changePercent > 0 ? '+' : ''}${changePercent}%`;
-      changeElement.className = `change ${changePercent > 0 ? 'positive' : 'negative'}`;
-    }
-
-    // 生成随机地址
-    function generateRandomAddress() {
-      const chars = '0123456789abcdef';
-      let result = '0x';
-      for (let i = 0; i < 4; i++) {
-        result += chars.charAt(Math.floor(Math.random() * chars.length));
-      }
-      return result + '...';
-    }
-
-    // 添加到活动流
-    function addToActivityFeed(user, action, time) {
-      const feedList = document.getElementById('activityFeed');
-      const newItem = document.createElement('div');
-      newItem.className = 'feed-item';
-      newItem.innerHTML = `
-        <span class="user">${user}</span>
-        <span class="action">${action}</span>
-        <span class="time">${time}</span>
-      `;
-      
-      feedList.insertBefore(newItem, feedList.firstChild);
-      
-      // 保持最多5条记录
-      while (feedList.children.length > 5) {
-        feedList.removeChild(feedList.lastChild);
-      }
-    }
-    // 生成活动流
-    function generateActivityFeed() {
-      const actions = [
-        '点击了 50 次', '获得了新手成就', '分享到了 Twitter', 
-        '连接了钱包', '获得了连击成就', '邀请了好友'
-      ];
-      
-      setInterval(() => {
-        const user = generateRandomAddress();
-        const action = actions[Math.floor(Math.random() * actions.length)];
-        const timeAgo = Math.floor(Math.random() * 60) + 1;
-        addToActivityFeed(`用户 ${user}`, action, `${timeAgo}秒前`);
-      }, 5000);
-    }
-
-    // 实时更新
-    function startRealTimeUpdates() {
-      setInterval(() => {
-        updateDashboard();
-        updatePrice();
-      }, 30000); // 每30秒更新一次
-    }
-
-    // 语言切换
+    
+    // Toggle language function
     function toggleLanguage() {
-      currentLang = currentLang === 'zh' ? 'en' : 'zh';
-      document.getElementById('langText').textContent = currentLang === 'zh' ? 'EN' : '中文';
-      
-      // 这里可以添加多语言切换逻辑
-      document.querySelectorAll('[data-zh][data-en]').forEach(el => {
-        el.textContent = el.getAttribute('data-' + currentLang);
-      });
+        currentLang = currentLang === 'zh' ? 'en' : 'zh'; // Toggle language
+        document.getElementById('langText').textContent = currentLang === 'zh' ? 'EN' : '中文';
+    
+        // Update all multilingual text on page
+        document.querySelectorAll('[data-zh][data-en]').forEach(el => {
+            el.textContent = el.getAttribute('data-' + currentLang);
+        });
     }
-
-    // 连接钱包
-    function connectWallet() {
-      // 模拟钱包连接
-      showToast('钱包连接功能开发中...');
-      
-      // 模拟连接成功后的数据更新
-      setTimeout(() => {
-        document.getElementById('userRank').textContent = '#' + (Math.floor(Math.random() * 1000) + 1);
-        addToActivityFeed('你', '连接了钱包', '刚刚');
-      }, 1000);
-    }
-
-    // 显示App预览
-    function showAppPreview() {
-      showToast('App预览功能开发中...');
-    }
-
-    // 显示提示
+    
+    // Copy address
+    // function copyAddress() {
+    //   navigator.clipboard.writeText(contractAddress).then(() => {
+    //     showToast(currentLang === 'zh' ? '已Copy!' : 'Copied!');
+    //   }).catch(() => {
+    //     showToast('Failed to copy');
+    //   });
+    // }
+    
+    // Show toast
     function showToast(message) {
       const toast = document.createElement('div');
       toast.className = 'toast';
@@ -1159,19 +1996,32 @@
       
       setTimeout(() => {
         toast.remove();
-      }, 3000);
+      }, 2000);
     }
-
-    // 复制地址功能（保留原有功能）
+    
+    // Copy address
     function copyAddress(type) {
-      const contractAddress = '8mrMRf8QwGh5bSrgzKsMmHPTTGqDcENU91SWuXEypump';
+      let addressToCopy = '';
       
-      navigator.clipboard.writeText(contractAddress).then(() => {
-        showToast(currentLang === 'zh' ? '已复制!' : 'Copied!');
+      if (type === 'contract') {
+        addressToCopy = contractAddress;
+      } else if (type === 'sol') {
+        addressToCopy = solAddress;
+      } else if (type === 'popcow') {
+        addressToCopy = popcowAddress;
+      }
+      
+      navigator.clipboard.writeText(addressToCopy).then(() => {
+        showToast(currentLang === 'zh' ? '已Copy!' : 'Copied!');
       }).catch(() => {
-        showToast('复制失败');
+        showToast('Failed to copy');
       });
     }
+    
+    // 初始化页面
+    loadData();
+
+
   </script>
 </body>
 </html>
