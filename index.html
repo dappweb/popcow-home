@@ -94,11 +94,23 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      background: rgba(15, 23, 42, 0.6);
+      background: rgba(15, 23, 42, 0.8);
       padding: 8px 12px;
       border-radius: 8px;
       border: 1px solid rgba(34, 211, 238, 0.3);
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .address-label {
+      font-size: 10px;
+      color: #fbbf24;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      background: rgba(251, 191, 36, 0.2);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid rgba(251, 191, 36, 0.3);
     }
 
     .contract-code {
@@ -106,10 +118,10 @@
       font-size: 12px;
       color: #22d3ee;
       font-weight: 600;
+      max-width: 150px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      max-width: 200px;
     }
 
     .copy-btn {
@@ -1311,6 +1323,7 @@
     @media (min-width: 640px) {
       .logo { height: 40px; width: 40px; }
       .contract-code { font-size: 12px; max-width: none; }
+      .address-label { font-size: 10px; }
       .main-image { width: 288px; height: 288px; }
       .click-counter { width: 64px; height: 64px; font-size: 24px; }
       .total-number { font-size: 80px; }
@@ -1447,8 +1460,19 @@
         </div>
       </div>
       <div class="contract-address">
+        <span class="address-label">POPCOW</span>
         <code class="contract-code">8mrMRf8QwGh5bSrgzKsMmHPTTGqDcENU91SWuXEypump</code>
         <button class="copy-btn" onclick="copyAddress('contract')">
+          <svg width="16" height="16" fill="none" stroke="#22d3ee" stroke-width="2" viewBox="0 0 24 24">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="contract-address">
+        <span class="address-label">POPCOW DEFI</span>
+        <code class="contract-code">4sCGHM2NL1nV6fYfWSoCTMwmJDCjfHub9pSpz128pump</code>
+        <button class="copy-btn" onclick="copyAddress('popcowdefi')">
           <svg width="16" height="16" fill="none" stroke="#22d3ee" stroke-width="2" viewBox="0 0 24 24">
             <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
             <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
@@ -1865,6 +1889,7 @@
     
     // 合约地址
     const contractAddress = '8mrMRf8QwGh5bSrgzKsMmHPTTGqDcENU91SWuXEypump';
+    const popcowDefiAddress = '4sCGHM2NL1nV6fYfWSoCTMwmJDCjfHub9pSpz128pump';
     const solAddress = 'AAYciGXbqNLkk6nSggG7JdFEWPwWaPEjv491ZRHQRQt';
     const popcowAddress = 'AAYciGXbqNLkk6nSggG7JdFEWPwWaPEjv491ZRHQRQt';
     
@@ -1992,6 +2017,8 @@
       
       if (type === 'contract') {
         addressToCopy = contractAddress;
+      } else if (type === 'popcowdefi') {
+        addressToCopy = popcowDefiAddress;
       } else if (type === 'sol') {
         addressToCopy = solAddress;
       } else if (type === 'popcow') {
